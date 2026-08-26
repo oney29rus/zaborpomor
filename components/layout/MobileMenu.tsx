@@ -22,12 +22,12 @@ export function MobileMenu() {
         <button
           type="button"
           aria-label="Закрыть меню"
-          className="fixed inset-0 top-[57px] z-[60] lg:hidden"
+          className="fixed inset-0 top-[52px] z-[60] lg:hidden"
           onClick={closeMenu}
         />
         <div
           id="mobile-menu"
-          className="fixed left-0 right-0 top-[57px] z-[61] max-h-[calc(100dvh-57px)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
+          className="fixed left-0 right-0 top-[52px] z-[61] max-h-[calc(100dvh-52px)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
         >
           <nav className="flex flex-col px-3 py-1.5">
             {NAV_LINKS.map((link) => (
@@ -67,7 +67,7 @@ export function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? "Закрыть меню" : "Открыть меню"}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-background"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-background"
         onClick={() => setOpen((prev) => !prev)}
       >
         {open ? (
