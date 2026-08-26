@@ -10,10 +10,7 @@ import {
   SECTION_LABEL,
   SECTION_LINK,
 } from "@/lib/section-styles";
-import {
-  ProcessTimelineDesktop,
-  ProcessTimelineMobile,
-} from "./ProcessTimeline";
+import { ProcessTimeline } from "./ProcessTimeline";
 
 export function ProcessSection() {
   return (
@@ -37,8 +34,7 @@ export function ProcessSection() {
         </div>
 
         <div className={HOME_SECTION_CONTENT_MT}>
-          <ProcessTimelineDesktop />
-          <ProcessTimelineMobile compactMobile />
+          <ProcessTimeline compactMobile />
         </div>
       </div>
     </section>

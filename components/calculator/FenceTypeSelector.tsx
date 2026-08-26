@@ -55,7 +55,7 @@ function resolveFenceTypes(
     .filter((type): type is NonNullable<typeof type> => Boolean(type));
 }
 
-function MobileFenceTypeGrid({
+function CompactFenceTypeGrid({
   fenceTypes,
   value,
   onChange,
@@ -65,10 +65,14 @@ function MobileFenceTypeGrid({
   onChange: (value: FenceTypeId) => void;
 }) {
   return (
-    <div className="grid grid-cols-2 gap-1 lg:hidden">
+    <div className="grid grid-cols-2 gap-1 lg:grid-cols-3 lg:gap-2.5">
       {fenceTypes.map((type) => {
         const isActive = value === type.id;
         const pricePerMeter = resolveFenceFromPricePerMeter(type.id);
+        const priceLabel =
+          pricePerMeter !== null
+            ? `от ${formatPrice(pricePerMeter)}/м`
+            : "Цена по расчёту";
 
         return (
           <button
@@ -76,17 +80,17 @@ function MobileFenceTypeGrid({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(type.id)}
-            className={`relative flex flex-col rounded-lg border px-1 py-0.5 text-left transition-colors ${
+            className={`relative flex flex-col rounded-lg border px-1 py-0.5 text-left transition-colors lg:h-[7.75rem] lg:overflow-hidden lg:rounded-xl lg:px-0 lg:py-0 ${
               isActive
-                ? "border-accent bg-accent/[0.06]"
+                ? "border-accent bg-accent/[0.06] lg:bg-accent/[0.04]"
                 : "border-border bg-surface hover:border-muted"
             }`}
           >
             {isActive ? (
-              <CheckIndicator className="absolute top-0.5 right-0.5 z-10 h-3 w-3" />
+              <CheckIndicator className="absolute top-0.5 right-0.5 z-10 h-3 w-3 lg:top-1.5 lg:right-1.5 lg:h-4 lg:w-4" />
             ) : null}
 
-            <div className="relative h-[40px] w-full overflow-hidden rounded border border-border/30 bg-white">
+            <div className="relative h-[40px] w-full overflow-hidden rounded border border-border/30 bg-white lg:hidden">
               <FenceTypeSpriteThumb
                 typeId={type.id}
                 contained
@@ -94,15 +98,27 @@ function MobileFenceTypeGrid({
               />
             </div>
 
-            <span className="mt-0.5 line-clamp-2 text-[0.6875rem] font-semibold leading-tight text-foreground">
+            <FenceTypeSpriteThumb
+              typeId={type.id}
+              className="hidden h-[100px] w-full shrink-0 lg:block"
+            />
+
+            <span className="mt-0.5 line-clamp-2 text-[0.6875rem] font-semibold leading-tight text-foreground lg:hidden">
               {type.label}
             </span>
 
-            <span className="mt-px text-[0.625rem] leading-none text-muted">
-              {pricePerMeter !== null
-                ? `от ${formatPrice(pricePerMeter)}/м`
-                : "Цена по расчёту"}
+            <span className="mt-px text-[0.625rem] leading-none text-muted lg:hidden">
+              {priceLabel}
             </span>
+
+            <div className="hidden flex-1 flex-col justify-center border-t border-border/70 px-3 py-2.5 lg:flex lg:px-2.5 lg:py-2">
+              <span className="text-sm font-semibold leading-snug text-foreground lg:text-[0.8125rem] lg:leading-tight">
+                {type.label}
+              </span>
+              <span className="mt-0.5 text-xs text-muted lg:mt-0 lg:text-[0.6875rem]">
+                {priceLabel}
+              </span>
+            </div>
           </button>
         );
       })}
@@ -110,85 +126,60 @@ function MobileFenceTypeGrid({
   );
 }
 
-function DesktopFenceTypeGrid({
+function ScrollableFenceTypeGrid({
   fenceTypes,
   value,
   onChange,
-  compactMobile,
 }: {
   fenceTypes: ReturnType<typeof resolveFenceTypes>;
   value: FenceTypeId;
   onChange: (value: FenceTypeId) => void;
-  compactMobile: boolean;
 }) {
-  if (!compactMobile) {
-    return (
-      <div className="-mx-5 px-5 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-2.5 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
-          {fenceTypes.map((type) =>
-            renderDesktopCard(type, value, onChange, false),
-          )}
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="hidden lg:block">
-      <div className="grid grid-cols-3 gap-2.5">
-        {fenceTypes.map((type) =>
-          renderDesktopCard(type, value, onChange, true),
-        )}
+    <div className="-mx-5 px-5 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+      <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:grid lg:grid-cols-3 lg:gap-2.5 lg:overflow-visible lg:pb-0 [&::-webkit-scrollbar]:hidden">
+        {fenceTypes.map((type) => {
+          const isActive = value === type.id;
+          const pricePerMeter = resolveFenceFromPricePerMeter(type.id);
+          const priceLabel =
+            pricePerMeter !== null
+              ? `от ${formatPrice(pricePerMeter)}/м`
+              : "Цена по расчёту";
+
+          return (
+            <button
+              key={type.id}
+              type="button"
+              onClick={() => onChange(type.id)}
+              aria-pressed={isActive}
+              className={`relative flex h-[16.5rem] w-[78vw] max-w-[16.5rem] shrink-0 snap-start flex-col overflow-hidden rounded-xl border text-left transition-colors sm:h-[17rem] sm:max-w-[17rem] lg:h-[7.75rem] lg:w-auto lg:max-w-none ${
+                isActive
+                  ? "border-accent bg-accent/[0.04]"
+                  : "border-border bg-surface hover:border-muted"
+              }`}
+            >
+              {isActive ? (
+                <CheckIndicator className="absolute top-1.5 right-1.5 z-10 lg:h-4 lg:w-4" />
+              ) : null}
+
+              <FenceTypeSpriteThumb
+                typeId={type.id}
+                className="h-[60px] w-full shrink-0 sm:h-[72px] lg:h-[100px]"
+              />
+
+              <div className="flex flex-1 flex-col justify-center border-t border-border/70 px-3 py-2.5 lg:px-2.5 lg:py-2">
+                <span className="text-sm font-semibold leading-snug text-foreground lg:text-[0.8125rem] lg:leading-tight">
+                  {type.label}
+                </span>
+                <span className="mt-0.5 text-xs text-muted lg:mt-0 lg:text-[0.6875rem]">
+                  {priceLabel}
+                </span>
+              </div>
+            </button>
+          );
+        })}
       </div>
     </div>
-  );
-}
-
-function renderDesktopCard(
-  type: ReturnType<typeof resolveFenceTypes>[number],
-  value: FenceTypeId,
-  onChange: (value: FenceTypeId) => void,
-  compactDesktop: boolean,
-) {
-  const isActive = value === type.id;
-  const pricePerMeter = resolveFenceFromPricePerMeter(type.id);
-
-  const cardClass = compactDesktop
-    ? "relative flex h-[7.75rem] w-auto max-w-none flex-col overflow-hidden rounded-xl border text-left transition-colors"
-    : "relative flex h-[16.5rem] w-[78vw] max-w-[16.5rem] shrink-0 snap-start flex-col overflow-hidden rounded-xl border text-left transition-colors sm:h-[17rem] sm:max-w-[17rem] lg:h-[7.75rem] lg:w-auto lg:max-w-none";
-
-  return (
-    <button
-      key={type.id}
-      type="button"
-      onClick={() => onChange(type.id)}
-      aria-pressed={isActive}
-      className={`${cardClass} ${
-        isActive
-          ? "border-accent bg-accent/[0.04]"
-          : "border-border bg-surface hover:border-muted"
-      }`}
-    >
-      {isActive ? (
-        <CheckIndicator className="absolute top-1.5 right-1.5 z-10 lg:h-4 lg:w-4" />
-      ) : null}
-
-      <FenceTypeSpriteThumb
-        typeId={type.id}
-        className="h-[60px] w-full shrink-0 sm:h-[72px] lg:h-[100px]"
-      />
-
-      <div className="flex flex-1 flex-col justify-center border-t border-border/70 px-3 py-2.5 lg:px-2.5 lg:py-2">
-        <span className="text-sm font-semibold leading-snug text-foreground lg:text-[0.8125rem] lg:leading-tight">
-          {type.label}
-        </span>
-        <span className="mt-0.5 text-xs text-muted lg:mt-0 lg:text-[0.6875rem]">
-          {pricePerMeter !== null
-            ? `от ${formatPrice(pricePerMeter)}/м`
-            : "Цена по расчёту"}
-        </span>
-      </div>
-    </button>
   );
 }
 
@@ -249,28 +240,19 @@ export function FenceTypeSelector({
 
   if (compactMobile) {
     return (
-      <>
-        <MobileFenceTypeGrid
-          fenceTypes={fenceTypes}
-          value={value}
-          onChange={handleChange}
-        />
-        <DesktopFenceTypeGrid
-          fenceTypes={fenceTypes}
-          value={value}
-          onChange={handleChange}
-          compactMobile={compactMobile}
-        />
-      </>
+      <CompactFenceTypeGrid
+        fenceTypes={fenceTypes}
+        value={value}
+        onChange={handleChange}
+      />
     );
   }
 
   return (
-    <DesktopFenceTypeGrid
+    <ScrollableFenceTypeGrid
       fenceTypes={fenceTypes}
       value={value}
       onChange={handleChange}
-      compactMobile={false}
     />
   );
 }

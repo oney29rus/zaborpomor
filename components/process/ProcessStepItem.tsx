@@ -2,7 +2,7 @@ import type { ProcessStep as ProcessStepType } from "@/lib/process/steps";
 
 type ProcessStepProps = {
   step: ProcessStepType;
-  variant?: "horizontal" | "vertical";
+  variant?: "horizontal" | "vertical" | "responsive";
   compactMobile?: boolean;
 };
 
@@ -13,9 +13,14 @@ export function ProcessStepItem({
 }: ProcessStepProps) {
   const isHighlighted = step.highlighted;
   const isCompactVertical = variant === "vertical" && compactMobile;
+  const isResponsive = variant === "responsive";
 
   return (
-    <article className={variant === "horizontal" ? "min-w-0 flex-1" : ""}>
+    <article
+      className={
+        variant === "horizontal" || isResponsive ? "min-w-0 lg:flex-1" : ""
+      }
+    >
       <div className="flex items-center gap-1.5">
         <span
           className={`text-xs font-semibold tracking-[0.12em] lg:text-sm ${
@@ -24,21 +29,23 @@ export function ProcessStepItem({
         >
           {step.step}
         </span>
-        {variant === "horizontal" && (
+        {variant === "horizontal" || isResponsive ? (
           <span
             aria-hidden="true"
             className={`hidden h-1.5 w-1.5 rounded-full lg:inline-block ${
               isHighlighted ? "bg-accent" : "bg-border"
             }`}
           />
-        )}
+        ) : null}
       </div>
 
       <h3
-        className={`font-bold leading-snug lg:mt-2.5 lg:text-[0.9375rem] ${
-          isCompactVertical
-            ? "mt-0.5 text-sm"
-            : "mt-2 text-base lg:mt-2.5 lg:text-[0.9375rem]"
+        className={`font-bold leading-snug ${
+          isResponsive
+            ? "mt-0.5 text-sm lg:mt-2.5 lg:text-[0.9375rem]"
+            : isCompactVertical
+              ? "mt-0.5 text-sm"
+              : "mt-2 text-base lg:mt-2.5 lg:text-[0.9375rem]"
         } ${isHighlighted ? "text-accent" : "text-foreground"}`}
       >
         {step.title}
@@ -46,9 +53,11 @@ export function ProcessStepItem({
 
       <p
         className={`leading-snug text-muted lg:mt-1 lg:text-[0.8125rem] lg:leading-snug ${
-          isCompactVertical
-            ? "mt-0.5 line-clamp-2 text-xs"
-            : "mt-1.5 text-sm lg:mt-1"
+          isResponsive
+            ? "mt-0.5 line-clamp-2 text-xs lg:line-clamp-none lg:text-sm"
+            : isCompactVertical
+              ? "mt-0.5 line-clamp-2 text-xs"
+              : "mt-1.5 text-sm lg:mt-1"
         }`}
       >
         {step.description}
