@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
 import { HERO_BENEFITS } from "@/lib/constants";
 import { WORKS_ALL_HREF } from "@/lib/works/projects";
@@ -7,14 +8,23 @@ import {
   SECTION_LABEL,
 } from "@/lib/section-styles";
 
-const HERO_CTA_CLASS =
+const HERO_PRIMARY_CTA_CLASS =
   "w-full max-lg:!h-[3.375rem] max-lg:!min-h-[3.375rem] max-lg:px-5 max-lg:!py-0 max-lg:text-[1.0625rem] sm:w-auto lg:!h-auto lg:!min-h-12 lg:px-8 lg:!py-3 lg:text-base";
+
+const HERO_SECONDARY_CTA_CLASS =
+  "w-full sm:w-auto lg:!h-auto lg:!min-h-12 lg:px-8 lg:!py-3 lg:text-base";
+
+const HERO_MOBILE_BENEFIT_LABELS: Record<(typeof HERO_BENEFITS)[number], string> = {
+  "Своё производство": "Своё производство",
+  "Гарантия 24 месяца": "Гарантия 24 мес.",
+  "Бесплатный замер": "Бесплатный замер",
+};
 
 export function Hero() {
   return (
     <section className="bg-background">
       <div
-        className={`${SECTION_CONTAINER} max-lg:flex max-lg:flex-col max-lg:gap-1 max-lg:py-1 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
+        className={`${SECTION_CONTAINER} max-lg:flex max-lg:flex-col max-lg:gap-1 max-lg:py-0.5 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
       >
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           <p
@@ -41,34 +51,51 @@ export function Hero() {
             до начала работ.
           </p>
 
-          <div className="relative z-10 order-6 mt-1 flex flex-col gap-1.5 max-lg:gap-1.5 sm:mt-6 sm:flex-row sm:items-center sm:gap-3 lg:order-none lg:mt-6">
-            <ButtonLink href="#calculator" className={HERO_CTA_CLASS}>
+          <div className="relative z-10 order-6 mt-0.5 flex flex-col items-stretch max-lg:mt-0.5 sm:mt-6 lg:order-none lg:mt-6 lg:flex-row lg:items-center lg:gap-3">
+            <ButtonLink href="#calculator" className={HERO_PRIMARY_CTA_CLASS}>
               Рассчитать стоимость
             </ButtonLink>
+            <Link
+              href={WORKS_ALL_HREF}
+              className="max-lg:mt-0.5 max-lg:block max-lg:py-1.5 max-lg:text-center max-lg:text-sm max-lg:font-semibold max-lg:text-accent max-lg:transition-colors max-lg:hover:text-accent-hover lg:hidden"
+            >
+              Посмотреть работы →
+            </Link>
             <ButtonLink
               href={WORKS_ALL_HREF}
               variant="secondary"
-              className={HERO_CTA_CLASS}
+              className={`hidden lg:inline-flex ${HERO_SECONDARY_CTA_CLASS}`}
             >
               Посмотреть работы
             </ButtonLink>
           </div>
 
-          <ul className="order-7 mt-1 grid grid-cols-2 gap-1 max-lg:gap-0.5 sm:mt-6 sm:flex sm:flex-wrap sm:gap-x-0 sm:gap-y-3 lg:order-none lg:mt-6 lg:flex-row lg:items-center">
+          <ul className="order-7 max-lg:mt-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-2 max-lg:gap-y-0 sm:mt-6 lg:order-none lg:mt-6 lg:flex lg:flex-row lg:items-center">
             {HERO_BENEFITS.map((benefit, index) => (
               <li
                 key={benefit}
-                className={`flex items-center rounded-full border border-border bg-surface text-foreground/85 max-lg:px-2 max-lg:py-px max-lg:text-sm max-lg:leading-tight sm:rounded-none sm:border-0 sm:bg-transparent sm:px-0 sm:py-0 sm:text-sm lg:text-[0.9375rem] ${
-                  index === 2 ? "col-span-2 max-lg:justify-self-start sm:col-span-1" : ""
+                className={`flex items-center max-lg:gap-0.5 max-lg:text-[0.8125rem] max-lg:leading-none max-lg:text-foreground/85 lg:text-sm lg:text-[0.9375rem] ${
+                  index === 2
+                    ? "max-lg:col-span-2 min-[390px]:max-lg:col-span-1"
+                    : ""
                 }`}
               >
                 {index > 0 ? (
                   <span
                     aria-hidden="true"
-                    className="mx-4 hidden h-1 w-1 rounded-full bg-border sm:block"
+                    className="mx-4 hidden h-1 w-1 shrink-0 rounded-full bg-border lg:block"
                   />
                 ) : null}
-                {benefit}
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 font-bold text-accent max-lg:text-xs lg:hidden"
+                >
+                  ✓
+                </span>
+                <span className="lg:hidden">
+                  {HERO_MOBILE_BENEFIT_LABELS[benefit]}
+                </span>
+                <span className="hidden lg:inline">{benefit}</span>
               </li>
             ))}
           </ul>
