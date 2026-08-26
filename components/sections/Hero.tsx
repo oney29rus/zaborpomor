@@ -24,7 +24,7 @@ export function Hero() {
   return (
     <section className="bg-background">
       <div
-        className={`${SECTION_CONTAINER} max-lg:flex max-lg:flex-col max-lg:gap-1 max-lg:py-0.5 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
+        className={`${SECTION_CONTAINER} max-lg:flex max-lg:flex-col max-lg:gap-1 max-lg:pb-0 max-lg:pt-0.5 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
       >
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           <p
@@ -51,32 +51,32 @@ export function Hero() {
             до начала работ.
           </p>
 
-          <div className="relative z-10 order-6 mt-0.5 flex flex-col items-stretch max-lg:mt-0.5 sm:mt-6 lg:order-none lg:mt-6 lg:flex-row lg:items-center lg:gap-3">
+          <div className="relative z-10 order-6 max-lg:mt-0.5 flex flex-col items-stretch lg:order-none lg:mt-6 lg:flex-row lg:items-center lg:gap-3">
             <ButtonLink href="#calculator" className={HERO_PRIMARY_CTA_CLASS}>
               Рассчитать стоимость
             </ButtonLink>
             <Link
               href={WORKS_ALL_HREF}
-              className="max-lg:mt-0.5 max-lg:block max-lg:py-1.5 max-lg:text-center max-lg:text-sm max-lg:font-semibold max-lg:text-accent max-lg:transition-colors max-lg:hover:text-accent-hover lg:hidden"
+              className="mt-3 max-lg:block max-lg:py-0 max-lg:text-center max-lg:text-sm max-lg:font-semibold max-lg:text-accent max-lg:transition-colors max-lg:hover:text-accent-hover lg:hidden"
             >
               Посмотреть работы →
             </Link>
             <ButtonLink
               href={WORKS_ALL_HREF}
               variant="secondary"
-              className={`hidden lg:inline-flex ${HERO_SECONDARY_CTA_CLASS}`}
+              className={`max-lg:!hidden lg:!inline-flex ${HERO_SECONDARY_CTA_CLASS}`}
             >
               Посмотреть работы
             </ButtonLink>
           </div>
 
-          <ul className="order-7 max-lg:mt-0 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-2 max-lg:gap-y-0 sm:mt-6 lg:order-none lg:mt-6 lg:flex lg:flex-row lg:items-center">
+          <ul className="order-7 mt-3 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-3 max-lg:gap-y-0.5 lg:order-none lg:mt-6 lg:flex lg:flex-row lg:items-center">
             {HERO_BENEFITS.map((benefit, index) => (
               <li
                 key={benefit}
                 className={`flex items-center max-lg:gap-0.5 max-lg:text-[0.8125rem] max-lg:leading-none max-lg:text-foreground/85 lg:text-sm lg:text-[0.9375rem] ${
                   index === 2
-                    ? "max-lg:col-span-2 min-[390px]:max-lg:col-span-1"
+                    ? "max-lg:col-span-2 max-lg:justify-self-start min-[390px]:max-lg:col-span-1"
                     : ""
                 }`}
               >
