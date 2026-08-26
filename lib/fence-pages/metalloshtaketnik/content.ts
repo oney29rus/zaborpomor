@@ -6,8 +6,11 @@ import {
 } from "@/lib/calculator/prices";
 
 import {
+  buildFenceHeightPricingRows,
+  FENCE_HEIGHTS_SPEC_LABEL,
+  fenceFaqHeightChoiceAnswer,
+  fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
-  fencePriceFromLabel18,
 } from "@/lib/pricing/fence-price-labels";
 
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
@@ -73,7 +76,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
   },
 
   specs: [
-    { label: "Высота", value: "1,5 / 1,8 м" },
+    { label: "Высота", value: FENCE_HEIGHTS_SPEC_LABEL },
 
     { label: "Материал", value: "Металлоштакетник" },
 
@@ -91,18 +94,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
       "Ориентировочная стоимость с материалом и монтажом за погонный метр.",
 
     rows: [
-      {
-        label: "Металлоштакетник 1,5 м",
-
-        value: fencePriceFromLabel15("metalloshtaketnik"),
-      },
-
-      {
-        label: "Металлоштакетник 1,8 м",
-
-        value: fencePriceFromLabel18("metalloshtaketnik"),
-      },
-
+      ...buildFenceHeightPricingRows("metalloshtaketnik", "Металлоштакетник"),
       {
         label: "Зазор 4 см",
 
@@ -428,7 +420,10 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
         question: "Сколько стоит забор из металлоштакетника?",
 
-        answer: `Ориентировочная цена — ${fencePriceFromLabel15("metalloshtaketnik")} с материалом и монтажом при высоте 1,5 м, ${fencePriceFromLabel18("metalloshtaketnik")} при высоте 1,8 м. Шахматное заполнение — от ${SHAHMATKA_PRICE.toLocaleString("ru-RU")} ₽/м. Итог зависит от длины, зазора, ворот и особенностей участка.`,
+        answer: fenceFaqPriceByHeightAnswer(
+          "metalloshtaketnik",
+          `Шахматное заполнение — от ${SHAHMATKA_PRICE.toLocaleString("ru-RU")} ₽/м. Итог зависит от длины, зазора, ворот и особенностей участка.`,
+        ),
       },
 
       {
@@ -463,7 +458,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
         question: "Какой высоты сделать забор?",
 
-        answer: `Чаще всего устанавливают металлоштакетник высотой 1,5 м (${fencePriceFromLabel15("metalloshtaketnik")}) или 1,8 м (${fencePriceFromLabel18("metalloshtaketnik")}). Высоту подбираем под участок, соседние ограждения и задачи по приватности.`,
+        answer: fenceFaqHeightChoiceAnswer("metalloshtaketnik"),
       },
 
       {

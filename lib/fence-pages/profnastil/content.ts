@@ -5,8 +5,10 @@ import {
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
 import type { FencePageContent } from "@/lib/fence-pages/types";
 import {
+  buildFenceHeightPricingRows,
+  FENCE_HEIGHTS_SPEC_LABEL,
+  fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
-  fencePriceFromLabel18,
 } from "@/lib/pricing/fence-price-labels";
 import { MONTAZH_IZ_MATERIALA_HREF } from "@/lib/services/mount-only";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
@@ -45,7 +47,7 @@ export const PROFNASTIL_PAGE: FencePageContent = {
     imageObjectPosition: "50% 50%",
   },
   specs: [
-    { label: "Высота", value: "1,5 / 1,8 м" },
+    { label: "Высота", value: FENCE_HEIGHTS_SPEC_LABEL },
     { label: "Профлист", value: "С8" },
     { label: "Каркас", value: "металлический" },
     { label: "Монтаж", value: "под ключ" },
@@ -55,10 +57,7 @@ export const PROFNASTIL_PAGE: FencePageContent = {
     title: "Цены на забор из профнастила",
     description:
       "Ориентировочная стоимость с материалом и монтажом за погонный метр.",
-    rows: [
-      { label: "Высота 1,5 м", value: fencePriceFromLabel15("profnastil") },
-      { label: "Высота 1,8 м", value: fencePriceFromLabel18("profnastil") },
-    ],
+    rows: buildFenceHeightPricingRows("profnastil"),
     disclaimer:
       "Цена указана ориентировочно за погонный метр забора с материалом и монтажом. Итоговая стоимость зависит от длины, особенностей участка, комплектации, ворот и других параметров.",
     ctaLabel: "Рассчитать мой забор",
@@ -247,13 +246,16 @@ export const PROFNASTIL_PAGE: FencePageContent = {
       {
         id: "profnastil-price",
         question: "Сколько стоит забор из профнастила?",
-        answer: `Ориентировочная цена — ${fencePriceFromLabel15("profnastil")} с материалом и монтажом при высоте 1,5 м, ${fencePriceFromLabel18("profnastil")} при высоте 1,8 м. Итог зависит от длины, комплектации, ворот и особенностей участка.`,
+        answer: fenceFaqPriceByHeightAnswer(
+          "profnastil",
+          "Итог зависит от длины, комплектации, ворот и особенностей участка.",
+        ),
       },
       {
         id: "profnastil-height",
-        question: "Какую высоту выбрать — 1,5 или 1,8 м?",
+        question: "Какую высоту выбрать — 1,5, 1,8 или 2,0 м?",
         answer:
-          "1,5 м — распространённый вариант для дачи и частного участка. 1,8 м даёт более закрытое ограждение. Высоту подбираем под ваш участок, соседние заборы и задачи по приватности.",
+          "1,5 м — распространённый вариант для дачи и частного участка. 1,8 м даёт более закрытое ограждение, 2,0 м — максимальная приватность. Высоту подбираем под ваш участок, соседние заборы и задачи по приватности.",
       },
       {
         id: "profnastil-color",

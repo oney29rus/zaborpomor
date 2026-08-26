@@ -5,8 +5,11 @@ import {
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
 import type { FencePageContent } from "@/lib/fence-pages/types";
 import {
+  buildFenceHeightPricingRows,
+  FENCE_HEIGHTS_SPEC_LABEL,
+  fenceFaqHeightChoiceAnswer,
+  fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
-  fencePriceFromLabel18,
 } from "@/lib/pricing/fence-price-labels";
 import { MONTAZH_IZ_MATERIALA_HREF } from "@/lib/services/mount-only";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
@@ -46,7 +49,7 @@ export const SVARNAYA_SETKA_PAGE: FencePageContent = {
   },
   specs: [
     { label: "Тип", value: "сварная сетка" },
-    { label: "Высота", value: "1,5 / 1,8 м" },
+    { label: "Высота", value: FENCE_HEIGHTS_SPEC_LABEL },
     { label: "Лаги", value: "верхняя и нижняя" },
     { label: "Монтаж", value: "под ключ" },
     { label: "Гарантия", value: "24 месяца" },
@@ -55,10 +58,7 @@ export const SVARNAYA_SETKA_PAGE: FencePageContent = {
     title: "Цены на забор из сварной сетки",
     description:
       "Ориентировочная стоимость с материалом и монтажом за погонный метр.",
-    rows: [
-      { label: "Высота 1,5 м", value: fencePriceFromLabel15("svarka-setka") },
-      { label: "Высота 1,8 м", value: fencePriceFromLabel18("svarka-setka") },
-    ],
+    rows: buildFenceHeightPricingRows("svarka-setka"),
     disclaimer:
       "Цена указана ориентировочно за погонный метр забора с материалом и монтажом. Итоговая стоимость зависит от длины, особенностей участка, комплектации, ворот и других параметров.",
     ctaLabel: "Рассчитать мой забор",
@@ -224,7 +224,10 @@ export const SVARNAYA_SETKA_PAGE: FencePageContent = {
       {
         id: "setka-price",
         question: "Сколько стоит забор из сварной сетки?",
-        answer: `Ориентировочная цена — ${fencePriceFromLabel15("svarka-setka")} с материалом и монтажом при высоте 1,5 м, ${fencePriceFromLabel18("svarka-setka")} при высоте 1,8 м. Итог зависит от длины, ворот и особенностей участка.`,
+        answer: fenceFaqPriceByHeightAnswer(
+          "svarka-setka",
+          "Итог зависит от длины, ворот и особенностей участка.",
+        ),
       },
       {
         id: "setka-vs-3d",
@@ -252,7 +255,7 @@ export const SVARNAYA_SETKA_PAGE: FencePageContent = {
       {
         id: "setka-height",
         question: "Какую высоту выбрать?",
-        answer: `Чаще всего ставят 1,5 м (${fencePriceFromLabel15("svarka-setka")}) или 1,8 м (${fencePriceFromLabel18("svarka-setka")}). Высоту подбираем под ваш участок и задачи по ограждению.`,
+        answer: fenceFaqHeightChoiceAnswer("svarka-setka"),
       },
       {
         id: "setka-gates",

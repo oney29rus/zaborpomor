@@ -5,6 +5,10 @@ import {
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
 import type { FencePageContent } from "@/lib/fence-pages/types";
 import {
+  buildFenceHeightPricingRows,
+  FENCE_HEIGHTS_SPEC_LABEL,
+  fenceFaqHeightChoiceAnswer,
+  fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
   fencePriceFromLabel18,
 } from "@/lib/pricing/fence-price-labels";
@@ -45,7 +49,7 @@ export const THREE_D_SETKA_PAGE: FencePageContent = {
   },
   specs: [
     { label: "Тип", value: "3D-панели" },
-    { label: "Высота", value: "1,5 / 1,8 м" },
+    { label: "Высота", value: FENCE_HEIGHTS_SPEC_LABEL },
     { label: "Конструкция", value: "панели + столбы" },
     { label: "Монтаж", value: "под ключ" },
     { label: "Гарантия", value: "24 месяца" },
@@ -54,10 +58,7 @@ export const THREE_D_SETKA_PAGE: FencePageContent = {
     title: "Цены на забор из 3D-сетки",
     description:
       "Ориентировочная стоимость с материалом и монтажом за погонный метр.",
-    rows: [
-      { label: "Высота 1,5 м", value: fencePriceFromLabel15("3d-setka") },
-      { label: "Высота 1,8 м", value: fencePriceFromLabel18("3d-setka") },
-    ],
+    rows: buildFenceHeightPricingRows("3d-setka"),
     disclaimer:
       "Цена указана ориентировочно за погонный метр забора с материалом и монтажом. Итоговая стоимость зависит от длины, особенностей участка, комплектации, ворот и других параметров.",
     ctaLabel: "Рассчитать мой забор",
@@ -224,7 +225,10 @@ export const THREE_D_SETKA_PAGE: FencePageContent = {
       {
         id: "3d-price",
         question: "Сколько стоит забор из 3D-сетки?",
-        answer: `Ориентировочная цена — ${fencePriceFromLabel15("3d-setka")} с материалом и монтажом при высоте 1,5 м, ${fencePriceFromLabel18("3d-setka")} при высоте 1,8 м. Итог зависит от длины, ворот, калитки и особенностей участка.`,
+        answer: fenceFaqPriceByHeightAnswer(
+          "3d-setka",
+          "Итог зависит от длины, ворот, калитки и особенностей участка.",
+        ),
       },
       {
         id: "3d-vs-setka",
@@ -246,7 +250,7 @@ export const THREE_D_SETKA_PAGE: FencePageContent = {
       {
         id: "3d-height",
         question: "Какую высоту выбрать?",
-        answer: `Для дачи и частного участка чаще выбирают 1,5 м (${fencePriceFromLabel15("3d-setka")}) или 1,8 м (${fencePriceFromLabel18("3d-setka")}). Высоту подбираем под периметр и задачи по ограждению.`,
+        answer: fenceFaqHeightChoiceAnswer("3d-setka"),
       },
       {
         id: "3d-gates",

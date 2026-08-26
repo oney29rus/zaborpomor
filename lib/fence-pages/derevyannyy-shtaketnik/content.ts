@@ -5,8 +5,11 @@ import {
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
 import type { FencePageContent } from "@/lib/fence-pages/types";
 import {
+  buildFenceHeightPricingRows,
+  FENCE_HEIGHTS_SPEC_LABEL,
+  fenceFaqHeightChoiceAnswer,
+  fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
-  fencePriceFromLabel18,
 } from "@/lib/pricing/fence-price-labels";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
 
@@ -45,7 +48,7 @@ export const DEREVYANNY_SHTAKETNIK_PAGE: FencePageContent = {
   },
   specs: [
     { label: "Материал", value: "деревянный штакетник" },
-    { label: "Высота", value: "1,5 / 1,8 м" },
+    { label: "Высота", value: FENCE_HEIGHTS_SPEC_LABEL },
     { label: "Ширина планки", value: "12 см" },
     { label: "Монтаж", value: "под ключ" },
     { label: "Гарантия", value: "24 месяца" },
@@ -54,16 +57,7 @@ export const DEREVYANNY_SHTAKETNIK_PAGE: FencePageContent = {
     title: "Цены на забор из деревянного штакетника",
     description:
       "Ориентировочная стоимость с материалом и монтажом за погонный метр.",
-    rows: [
-      {
-        label: "Высота 1,5 м",
-        value: fencePriceFromLabel15("derevyannyy-shtaketnik"),
-      },
-      {
-        label: "Высота 1,8 м",
-        value: fencePriceFromLabel18("derevyannyy-shtaketnik"),
-      },
-    ],
+    rows: buildFenceHeightPricingRows("derevyannyy-shtaketnik"),
     disclaimer:
       "Цена указана ориентировочно за погонный метр забора с материалом и монтажом. Итоговая стоимость зависит от длины, зазора между планками, варианта заполнения, ворот и других параметров.",
     ctaLabel: "Рассчитать мой забор",
@@ -237,7 +231,10 @@ export const DEREVYANNY_SHTAKETNIK_PAGE: FencePageContent = {
       {
         id: "wood-price",
         question: "Сколько стоит деревянный забор?",
-        answer: `Ориентировочная цена — ${fencePriceFromLabel15("derevyannyy-shtaketnik")} с материалом и монтажом при высоте 1,5 м, ${fencePriceFromLabel18("derevyannyy-shtaketnik")} при высоте 1,8 м. Шахматное заполнение и плотный зазор могут повлиять на итог — уточним при расчёте.`,
+        answer: fenceFaqPriceByHeightAnswer(
+          "derevyannyy-shtaketnik",
+          "Шахматное заполнение и плотный зазор могут повлиять на итог — уточним при расчёте.",
+        ),
       },
       {
         id: "wood-gap",
@@ -266,7 +263,7 @@ export const DEREVYANNY_SHTAKETNIK_PAGE: FencePageContent = {
       {
         id: "wood-height",
         question: "Какую высоту выбрать?",
-        answer: `Чаще всего устанавливают 1,5 м (${fencePriceFromLabel15("derevyannyy-shtaketnik")}) или 1,8 м (${fencePriceFromLabel18("derevyannyy-shtaketnik")}). Высоту подбираем под участок и соседние ограждения.`,
+        answer: fenceFaqHeightChoiceAnswer("derevyannyy-shtaketnik"),
       },
       {
         id: "wood-gates",
