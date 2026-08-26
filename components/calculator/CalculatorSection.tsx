@@ -6,9 +6,14 @@ import { MONTAZH_IZ_MATERIALA_HREF } from "@/lib/services/mount-only";
 import type { CalculatorParams } from "@/lib/calculator/types";
 import { CalculatorWidget } from "./CalculatorWidget";
 import {
+  HOME_SECTION_CONTENT_MT,
+  HOME_SECTION_DESC,
+  HOME_SECTION_TITLE,
+} from "@/lib/homepage/mobile-styles";
+import {
   SECTION_CONTAINER,
-  SECTION_CONTENT_MT,
   SECTION_DESC,
+  SECTION_CONTENT_MT,
   SECTION_LABEL,
   SECTION_TITLE,
 } from "@/lib/section-styles";
@@ -23,6 +28,7 @@ type CalculatorSectionProps = {
   defaultFenceType?: FenceTypeId;
   initialParams?: Partial<CalculatorParams>;
   className?: string;
+  compactMobile?: boolean;
 };
 
 export function CalculatorSection({
@@ -34,26 +40,32 @@ export function CalculatorSection({
   defaultFenceType,
   initialParams,
   className,
+  compactMobile = false,
 }: CalculatorSectionProps) {
   const resolvedConfig = config ?? UNIVERSAL_CALCULATOR_CONFIG;
   const isUniversal = resolvedConfig.mode === "universal";
   const sectionClassName =
     className ??
     (isUniversal
-      ? "scroll-mt-24 bg-background pt-12 pb-10 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
+      ? compactMobile
+        ? "scroll-mt-24 bg-background pt-8 pb-8 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
+        : "scroll-mt-24 bg-background pt-12 pb-10 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
       : "bg-background pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-12 lg:pb-16");
+  const titleClassName = compactMobile ? HOME_SECTION_TITLE : SECTION_TITLE;
+  const descClassName = compactMobile ? HOME_SECTION_DESC : SECTION_DESC;
+  const contentMtClassName = compactMobile ? HOME_SECTION_CONTENT_MT : SECTION_CONTENT_MT;
 
   return (
     <section id={id} className={sectionClassName}>
       <div className={SECTION_CONTAINER}>
         <div className="max-w-2xl">
           <p className={SECTION_LABEL}>{label}</p>
-          <h2 className={SECTION_TITLE}>{title}</h2>
-          <p className={SECTION_DESC}>{description}</p>
+          <h2 className={titleClassName}>{title}</h2>
+          <p className={descClassName}>{description}</p>
         </div>
 
         <div
-          className={`${SECTION_CONTENT_MT} ${isUniversal ? "max-lg:overflow-x-hidden" : ""}`}
+          className={`${contentMtClassName} ${isUniversal ? "max-lg:overflow-x-hidden" : ""}`}
         >
           <CalculatorWidget
             config={resolvedConfig}

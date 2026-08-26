@@ -30,9 +30,13 @@ export function ProcessTimelineDesktop() {
   );
 }
 
-export function ProcessTimelineMobile() {
+export function ProcessTimelineMobile({ compactMobile = false }: { compactMobile?: boolean }) {
   return (
-    <ol className="relative space-y-5 border-l border-border pl-5 lg:hidden">
+    <ol
+      className={`relative border-l border-border pl-5 lg:hidden ${
+        compactMobile ? "space-y-3.5" : "space-y-5"
+      }`}
+    >
       {PROCESS_STEPS.map((step) => (
         <li key={step.id} className="relative">
           <span

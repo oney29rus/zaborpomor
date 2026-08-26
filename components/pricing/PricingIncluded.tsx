@@ -1,16 +1,25 @@
+import { MobileExpandableText } from "@/components/ui/MobileExpandableText";
 import {
   PRICING_FOOTNOTE,
   PRICING_INCLUDED_ITEMS,
 } from "@/lib/pricing/featured-plans";
 
-export function PricingIncluded() {
+type PricingIncludedProps = {
+  compactMobile?: boolean;
+};
+
+export function PricingIncluded({ compactMobile = false }: PricingIncludedProps) {
   return (
-    <div className="rounded-2xl border border-border bg-surface p-5 lg:p-6">
+    <div
+      className={`rounded-2xl border border-border bg-surface ${
+        compactMobile ? "p-4 lg:p-6" : "p-5 lg:p-6"
+      }`}
+    >
       <h3 className="text-lg font-bold tracking-tight text-foreground">
         Что входит в стоимость
       </h3>
 
-      <ul className="mt-4 space-y-2.5">
+      <ul className={`space-y-2 ${compactMobile ? "mt-3 lg:mt-4 lg:space-y-2.5" : "mt-4 space-y-2.5"}`}>
         {PRICING_INCLUDED_ITEMS.map((item) => (
           <li
             key={item}
@@ -25,9 +34,18 @@ export function PricingIncluded() {
         ))}
       </ul>
 
-      <p className="mt-5 text-xs leading-relaxed text-muted lg:text-sm">
-        {PRICING_FOOTNOTE}
-      </p>
+      {compactMobile ? (
+        <MobileExpandableText
+          collapsedLines={3}
+          className="mt-3 text-xs leading-relaxed text-muted lg:mt-5 lg:text-sm"
+        >
+          {PRICING_FOOTNOTE}
+        </MobileExpandableText>
+      ) : (
+        <p className="mt-5 text-xs leading-relaxed text-muted lg:text-sm">
+          {PRICING_FOOTNOTE}
+        </p>
+      )}
     </div>
   );
 }

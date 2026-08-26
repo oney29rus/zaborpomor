@@ -39,7 +39,7 @@ export default function HomePage() {
       <Header />
       <main className="flex flex-1 flex-col">
         <Hero />
-        <CalculatorSection />
+        <CalculatorSection compactMobile />
         <CitiesHubSection />
         <FenceTypesSection />
         <CityMountOnlyPromo
@@ -51,18 +51,20 @@ export default function HomePage() {
           ctaLabel="Подробнее об установке →"
           ctaHref={MONTAZH_IZ_MATERIALA_HREF}
           className="bg-background"
+          compactMobile
         />
-        <AdditionalServicesSection />
+        <AdditionalServicesSection compactMobile />
         <WorksSection
           projectSlugs={[...HOMEPAGE_FEATURED_WORK_SLUGS]}
           showFilters={false}
-          mobileLayout="stack"
+          mobileLayout="grid-two"
+          compactMobile
         />
         <PricingSection />
         <WhyUsSection />
         <ProcessSection />
         <FaqSection />
-        <FinalCtaSection />
+        <FinalCtaSection compactMobile />
       </main>
       <Footer />
     </>

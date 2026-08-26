@@ -27,4 +27,4 @@ export function slidingGateCalculatorSurchargeLabel(): string {
 export function gateAutomationNiceSurchargeLabel(): string {
   return formatCalculatorSurchargeLabel(GATE_AUTOMATION_NICE_PRICE);
 }
-
+

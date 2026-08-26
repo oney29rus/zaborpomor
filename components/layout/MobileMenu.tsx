@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { HeaderCalculatorCta } from "@/components/layout/HeaderCalculatorCta";
 import { NAV_LINKS, PHONE, PHONE_HREF } from "@/lib/constants";
+
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
 
@@ -12,6 +14,51 @@ export function MobileMenu() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const closeMenu = () => setOpen(false);
+
+  const menuPanel = open ? (
+      <>
+        <button
+          type="button"
+          aria-label="Закрыть меню"
+          className="fixed inset-0 top-[57px] z-[60] lg:hidden"
+          onClick={closeMenu}
+        />
+        <div
+          id="mobile-menu"
+          className="fixed left-0 right-0 top-[57px] z-[61] max-h-[calc(100dvh-57px)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
+        >
+          <nav className="flex flex-col px-3 py-2">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-background"
+                onClick={closeMenu}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="border-t border-border px-3 py-2.5">
+            <a
+              href={PHONE_HREF}
+              className="block px-3 py-1.5 text-base font-semibold text-foreground"
+              onClick={closeMenu}
+            >
+              {PHONE}
+            </a>
+            <div className="mt-2 px-3">
+              <HeaderCalculatorCta
+                className="min-h-10 w-full py-2 text-sm"
+                onClick={closeMenu}
+              />
+            </div>
+          </div>
+        </div>
+      </>
+    ) : null;
 
   return (
     <div className="lg:hidden">
@@ -56,38 +103,7 @@ export function MobileMenu() {
         )}
       </button>
 
-      {open && (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 top-[57px] z-40 bg-surface"
-        >
-          <nav className="flex flex-col gap-1 px-4 py-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-background"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className="border-t border-border px-4 py-6">
-            <a
-              href={PHONE_HREF}
-              className="block text-lg font-semibold text-foreground"
-            >
-              {PHONE}
-            </a>
-            <div className="mt-4">
-              <HeaderCalculatorCta
-                className="w-full"
-                onClick={() => setOpen(false)}
-              />
-            </div>          </div>
-        </div>
-      )}
+      {menuPanel && createPortal(menuPanel, document.body)}
     </div>
   );
 }

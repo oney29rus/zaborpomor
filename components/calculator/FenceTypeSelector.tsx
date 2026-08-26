@@ -93,7 +93,7 @@ function MobileFenceTypeGrid({
 
             <FenceTypeSpriteThumb
               typeId={type.id}
-              className="h-12 w-full shrink-0 overflow-hidden rounded-md border border-border/40"
+              className="h-[60px] w-full shrink-0 rounded-md border border-border/40"
             />
 
             <span className="mt-1.5 line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-foreground">
@@ -175,11 +175,12 @@ function renderDesktopCard(
         <CheckIndicator className="absolute top-1.5 right-1.5 z-10 lg:h-4 lg:w-4" />
       ) : null}
 
-      <div className="min-h-0 flex-[7] overflow-hidden bg-white lg:flex-[1.85]">
-        <FenceTypeSpriteThumb typeId={type.id} className="h-full w-full" />
-      </div>
+      <FenceTypeSpriteThumb
+        typeId={type.id}
+        className="h-[60px] w-full shrink-0 sm:h-[72px] lg:h-[100px]"
+      />
 
-      <div className="flex flex-[3] flex-col justify-center border-t border-border/70 px-3 py-2.5 lg:flex-1 lg:px-2.5 lg:py-2">
+      <div className="flex flex-1 flex-col justify-center border-t border-border/70 px-3 py-2.5 lg:px-2.5 lg:py-2">
         <span className="text-sm font-semibold leading-snug text-foreground lg:text-[0.8125rem] lg:leading-tight">
           {type.label}
         </span>

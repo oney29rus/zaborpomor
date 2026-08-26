@@ -6,12 +6,11 @@ import type { FaqItem } from "@/lib/faq/types";
 
 type FaqAccordionProps = {
   items: FaqItem[];
-  defaultOpenId?: string;
+  defaultOpenId?: string | null;
 };
 
-export function FaqAccordion({ items, defaultOpenId }: FaqAccordionProps) {
-  const initialOpen = defaultOpenId ?? items[0]?.id ?? null;
-  const [openId, setOpenId] = useState<string | null>(initialOpen);
+export function FaqAccordion({ items, defaultOpenId = null }: FaqAccordionProps) {
+  const [openId, setOpenId] = useState<string | null>(defaultOpenId);
 
   const toggle = (id: string) => {
     setOpenId((current) => (current === id ? null : id));
@@ -32,7 +31,7 @@ export function FaqAccordion({ items, defaultOpenId }: FaqAccordionProps) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => toggle(item.id)}
-              className="flex w-full items-start justify-between gap-4 py-4 text-left transition-colors hover:text-accent sm:py-4"
+              className="flex w-full items-start justify-between gap-4 py-3 text-left transition-colors hover:text-accent sm:py-4"
             >
               <span className="text-base font-semibold leading-snug text-foreground sm:text-[1.0625rem]">
                 {item.question}
