@@ -34,7 +34,6 @@ jobs:
           key: ${{ secrets.TIMEWEB_SSH_KEY }}
           port: ${{ secrets.TIMEWEB_PORT || 22 }}
           envs: DEPLOY_SHA
-          script_stop: true
           command_timeout: 25m
           script: |
             set -euo pipefail
