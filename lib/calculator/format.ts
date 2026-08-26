@@ -1,3 +1,5 @@
+import type { FenceHeight } from "@/lib/calculator/types";
+
 const currencyFormatter = new Intl.NumberFormat("ru-RU", {
   style: "currency",
   currency: "RUB",
@@ -12,7 +14,7 @@ export function formatLength(meters: number): string {
   return `${meters} м`;
 }
 
-export function formatHeight(height: 1.5 | 1.8): string {
+export function formatHeight(height: FenceHeight): string {
   return `Высота ${height.toString().replace(".", ",")} м`;
 }
 

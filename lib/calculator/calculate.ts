@@ -167,8 +167,7 @@ export function calculateFenceCost(params: CalculatorParams): CalculatorResult {
   const price15 = getPricePerMeter(effectiveFenceType, 1.5);
 
   const heightSurcharge =
-
-    params.height === 1.8 ? (pricePerMeter - price15) * params.length : 0;
+    params.height > 1.5 ? (pricePerMeter - price15) * params.length : 0;
 
   const { doubleSidedPaintCost, pPlankCost } =
 

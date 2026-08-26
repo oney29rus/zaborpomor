@@ -8,8 +8,14 @@ import type { FenceHeight, FenceTypeConfig, FenceTypeId, GapOption } from "./typ
  * Исторические цены выполненных объектов (lib/works/projects.ts) не трогать.
  */
 
-/** @deprecated Используйте getPricePerMeter() — надбавки теперь задаются явно в pricePerMeter18. */
+/** @deprecated Используйте getPricePerMeter() — надбавки задаются явно в pricePerMeter18/20. */
 export const HEIGHT_SURCHARGE_PER_METER = 300;
+
+/** Доплата за п.м. для высоты 2,0 м относительно 1,8 м. */
+export const HEIGHT_20_SURCHARGE_PER_METER = 200;
+
+/** Доступные высоты забора в калькуляторе. */
+export const FENCE_HEIGHTS = [1.5, 1.8, 2.0] as const satisfies readonly FenceHeight[];
 
 /** Доплата за распашные ворота в калькуляторе забора. */
 export const SWING_GATE_CALCULATOR_SURCHARGE = 15_000;
@@ -169,7 +175,14 @@ export function getPricePerMeter(
     return price15;
   }
 
-  return config.pricePerMeter18 ?? price15 + HEIGHT_SURCHARGE_PER_METER;
+  const price18 =
+    config.pricePerMeter18 ?? price15 + HEIGHT_SURCHARGE_PER_METER;
+
+  if (height === 1.8) {
+    return price18;
+  }
+
+  return price18 + HEIGHT_20_SURCHARGE_PER_METER;
 }
 
 export function formatPricePerMeterLabel(amount: number): string {
