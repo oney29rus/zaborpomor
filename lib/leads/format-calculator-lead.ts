@@ -3,6 +3,7 @@ import type { CalculatorParameterFlags } from "@/lib/calculator/config";
 import {
   formatGap,
   formatGateType,
+  formatHeightValue,
   formatMetallVariant,
   formatPrice,
 } from "@/lib/calculator/format";
@@ -45,7 +46,7 @@ export function buildCalculatorSummaryLine(
     parameterFlags.metallVariant && params.metallVariant === "shahmatka"
       ? formatMetallVariant(params.metallVariant)
       : getEffectiveFenceTypeLabel(params).toLowerCase();
-  const height = `${params.height.toString().replace(".", ",")} м`;
+  const height = `${formatHeightValue(params.height)} м`;
   const gate = formatGateType(params.gateType).toLowerCase();
   const parts = [`${params.length} м`, fenceLabel, height];
 

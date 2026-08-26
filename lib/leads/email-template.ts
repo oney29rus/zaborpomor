@@ -1,4 +1,5 @@
 import type { CalculatorLeadData, LeadSource, LeadUtmParams } from "./types";
+import { formatHeightValue } from "@/lib/calculator/format";
 import { resolvePageLabel } from "./resolve-page-label";
 import { escapeHtml } from "./sanitize";
 
@@ -131,7 +132,7 @@ export function buildLeadEmailHtml(view: EmailLeadView): string {
     ? [
         renderRow("Тип забора", calc.fenceTypeLabel),
         renderRow("Длина", `${calc.length} м`),
-        renderRow("Высота", `${calc.height.toString().replace(".", ",")} м`),
+        renderRow("Высота", `${formatHeightValue(calc.height)} м`),
         renderRow("Вариант", calc.executionVariant),
         renderRow("Зазор", calc.gap),
         renderRow("Ворота", calc.gateTypeLabel),
@@ -200,7 +201,7 @@ export function buildLeadEmailText(view: EmailLeadView): string {
     lines.push("", "ПАРАМЕТРЫ ЗАБОРА");
     add("Тип забора", calc.fenceTypeLabel);
     add("Длина", `${calc.length} м`);
-    add("Высота", `${calc.height.toString().replace(".", ",")} м`);
+    add("Высота", `${formatHeightValue(calc.height)} м`);
     add("Вариант", calc.executionVariant);
     add("Зазор", calc.gap);
     add("Ворота", calc.gateTypeLabel);

@@ -1,5 +1,6 @@
 "use client";
 
+import { formatHeightValue } from "@/lib/calculator/format";
 import { FENCE_HEIGHTS } from "@/lib/calculator/prices";
 import type { FenceHeight } from "@/lib/calculator/types";
 
@@ -20,7 +21,7 @@ export function HeightSelector({
     >
       {FENCE_HEIGHTS.map((height) => {
         const isActive = value === height;
-        const label = `${height.toString().replace(".", ",")} м`;
+        const label = `${formatHeightValue(height)} м`;
 
         return (
           <button

@@ -14,8 +14,12 @@ export function formatLength(meters: number): string {
   return `${meters} м`;
 }
 
+export function formatHeightValue(height: FenceHeight | number): string {
+  return height.toFixed(1).replace(".", ",");
+}
+
 export function formatHeight(height: FenceHeight): string {
-  return `Высота ${height.toString().replace(".", ",")} м`;
+  return `Высота ${formatHeightValue(height)} м`;
 }
 
 export function formatGateType(
