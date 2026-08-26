@@ -90,12 +90,16 @@ export function LengthControl({
         onChange={(event) => onChange(clampLength(Number(event.target.value)))}
         aria-label="Длина забора, ползунок"
         className={`w-full cursor-pointer appearance-none rounded-full bg-border accent-accent lg:h-1.5 ${
-          compactMobile ? "mt-1.5 h-1.5" : "mt-4 h-2 lg:mt-2"
+          compactMobile
+            ? "mt-1.5 hidden h-1.5 lg:block lg:mt-2"
+            : "mt-4 h-2 lg:mt-2"
         }`}
       />
 
       <div
-        className={`flex justify-between text-xs text-muted lg:hidden ${compactMobile ? "mt-0.5" : "mt-1"}`}
+        className={`flex justify-between text-xs text-muted lg:hidden ${
+          compactMobile ? "hidden" : "mt-1"
+        }`}
       >
         <span>{LENGTH_MIN} м</span>
         <span>{LENGTH_MAX} м</span>

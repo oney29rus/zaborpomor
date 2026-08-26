@@ -7,6 +7,7 @@ import type { MetallVariant } from "@/lib/calculator/types";
 type MetallVariantSelectorProps = {
   value: MetallVariant;
   onChange: (value: MetallVariant) => void;
+  compactMobile?: boolean;
 };
 
 const VARIANT_OPTIONS: {
@@ -29,9 +30,10 @@ const VARIANT_OPTIONS: {
 export function MetallVariantSelector({
   value,
   onChange,
+  compactMobile = false,
 }: MetallVariantSelectorProps) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className={`grid ${compactMobile ? "grid-cols-2 gap-1.5" : "gap-3 sm:grid-cols-2"}`}>
       {VARIANT_OPTIONS.map((option) => {
         const isActive = value === option.id;
         const basePrice =
@@ -43,7 +45,9 @@ export function MetallVariantSelector({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(option.id)}
-            className={`rounded-lg border px-3 py-2.5 text-left transition-colors lg:py-2 ${
+            className={`rounded-lg border text-left transition-colors lg:py-2 ${
+              compactMobile ? "px-2 py-2" : "px-3 py-2.5"
+            } ${
               isActive
                 ? "border-accent bg-accent/5"
                 : "border-border bg-surface hover:border-muted"

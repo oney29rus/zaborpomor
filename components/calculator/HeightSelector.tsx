@@ -17,7 +17,7 @@ export function HeightSelector({
 }: HeightSelectorProps) {
   return (
     <div
-      className={`grid grid-cols-3 ${compactMobile ? "gap-2" : "gap-3"}`}
+      className={`grid grid-cols-3 ${compactMobile ? "gap-1.5" : "gap-3"}`}
     >
       {FENCE_HEIGHTS.map((height) => {
         const isActive = value === height;
@@ -31,7 +31,7 @@ export function HeightSelector({
             onClick={() => onChange(height)}
             className={`rounded-lg border font-semibold transition-colors ${
               compactMobile
-                ? "px-2 py-2 text-sm lg:px-4 lg:py-3 lg:text-base"
+                ? "min-h-10 px-1.5 py-2 text-sm lg:px-4 lg:py-3 lg:text-base"
                 : "px-3 py-3 text-base"
             } ${
               isActive

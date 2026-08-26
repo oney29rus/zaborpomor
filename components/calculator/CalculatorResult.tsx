@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { TrackedPhoneLink } from "@/components/leads/TrackedPhoneLink";
 import { trackEvent } from "@/lib/analytics/track";
@@ -28,12 +28,13 @@ export function CalculatorResult({
   compactMobile = false,
 }: CalculatorResultProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const formAnchorRef = useRef<HTMLDivElement>(null);
 
   const showPricePerMeter =
     result.kind === "priced" && canShowPricePerMeter(result);
 
   const shellClass = compactMobile
-    ? "mt-2 border-t border-border pt-3 max-lg:mt-2 max-lg:border-border/80 lg:mt-0 lg:border-t-0 lg:pt-0"
+    ? "mt-2 border-t border-border pt-2.5 max-lg:mt-2 max-lg:border-border/80 lg:mt-0 lg:border-t-0 lg:pt-0"
     : "border-t border-border pt-4 lg:border-t-0 lg:pt-0";
 
   const summaryLine = buildCalculatorSummaryLine(params, parameterFlags);
@@ -45,6 +46,17 @@ export function CalculatorResult({
       length: params.length,
     });
   };
+
+  useEffect(() => {
+    if (!isFormOpen || !compactMobile) {
+      return;
+    }
+
+    formAnchorRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
+  }, [compactMobile, isFormOpen]);
 
   return (
     <div className={shellClass}>
@@ -59,7 +71,7 @@ export function CalculatorResult({
           <p
             className={`font-bold leading-none tracking-tight text-foreground ${
               compactMobile
-                ? "mt-1 text-[1.5rem] lg:mt-2 lg:text-[2rem]"
+                ? "mt-0.5 text-[1.375rem] lg:mt-2 lg:text-[2rem]"
                 : "mt-2 text-[clamp(1.875rem,4vw,2.25rem)] lg:text-[2rem]"
             }`}
           >
@@ -80,23 +92,23 @@ export function CalculatorResult({
       )}
 
       <p
-        className={`text-foreground/80 ${compactMobile ? "mt-1.5 text-xs lg:mt-3 lg:text-[0.875rem]" : "mt-3 text-sm lg:text-[0.875rem]"}`}
+        className={`text-foreground/80 ${compactMobile ? "mt-1 text-xs leading-snug lg:mt-3 lg:text-[0.875rem]" : "mt-3 text-sm lg:text-[0.875rem]"}`}
       >
         {summaryLine}
       </p>
 
       <p
-        className={`leading-relaxed text-muted ${compactMobile ? "mt-1.5 hidden text-xs lg:mt-3 lg:block lg:text-sm" : "mt-3 text-xs lg:text-sm"}`}
+        className={`leading-relaxed text-muted ${compactMobile ? "mt-1 hidden text-xs lg:mt-3 lg:block lg:text-sm" : "mt-3 text-xs lg:text-sm"}`}
       >
         Предварительный расчёт. Точная стоимость зависит от участка и
         комплектации.
       </p>
 
-      <div className={compactMobile ? "mt-2.5 lg:mt-4" : "mt-4"}>
+      <div className={compactMobile ? "mt-2 lg:mt-4" : "mt-4"}>
         {!isFormOpen ? (
           <Button
             type="button"
-            className={`w-full ${compactMobile ? "max-lg:min-h-11 max-lg:py-2.5 max-lg:text-sm" : ""}`}
+            className={`w-full ${compactMobile ? "max-lg:!h-11 max-lg:!min-h-11 max-lg:!py-0 max-lg:text-sm" : ""}`}
             onClick={handleOpenForm}
           >
             Получить точный расчёт
@@ -104,14 +116,16 @@ export function CalculatorResult({
         ) : null}
       </div>
 
-      {isFormOpen ? (
-        <CalculatorSubmitForm
-          params={params}
-          result={result}
-          parameterFlags={parameterFlags}
-          compactMobile={compactMobile}
-        />
-      ) : null}
+      <div ref={formAnchorRef}>
+        {isFormOpen ? (
+          <CalculatorSubmitForm
+            params={params}
+            result={result}
+            parameterFlags={parameterFlags}
+            compactMobile={compactMobile}
+          />
+        ) : null}
+      </div>
 
       <p
         className={`text-center ${compactMobile ? "mt-2 max-lg:hidden lg:mt-3" : "mt-3"}`}

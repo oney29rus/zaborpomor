@@ -31,6 +31,9 @@ type CalculatorSubmitFormProps = {
 const inputClassName =
   "h-12 w-full min-w-0 rounded-lg border border-border bg-background px-4 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent";
 
+const compactInputClassName =
+  "h-11 w-full min-w-0 rounded-lg border border-border bg-background px-3 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent lg:h-12 lg:px-4";
+
 export function CalculatorSubmitForm({
   params,
   result,
@@ -118,23 +121,29 @@ export function CalculatorSubmitForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`rounded-xl border border-border bg-background/80 p-4 ${
-        compactMobile ? "mt-2.5 lg:mt-4" : "mt-4"
+      className={`rounded-xl border border-border bg-background/80 ${
+        compactMobile ? "mt-2 p-3 lg:mt-4 lg:p-4" : "mt-4 p-4"
       }`}
       noValidate
     >
-      <p className="text-sm font-semibold text-foreground">Ваш расчёт:</p>
-      <p className="mt-1 text-sm leading-relaxed text-foreground/85">
-        {summaryLine}
+      <p className={`font-semibold text-foreground ${compactMobile ? "text-sm lg:text-base" : "text-sm"}`}>
+        Оставьте номер — уточним расчёт
       </p>
-      {estimatedLabel ? (
-        <p className="mt-2 text-sm text-muted">
-          Ориентировочно:{" "}
-          <span className="font-semibold text-foreground">{estimatedLabel}</span>
-        </p>
+      {!compactMobile ? (
+        <>
+          <p className="mt-1 text-sm leading-relaxed text-foreground/85">
+            {summaryLine}
+          </p>
+          {estimatedLabel ? (
+            <p className="mt-2 text-sm text-muted">
+              Ориентировочно:{" "}
+              <span className="font-semibold text-foreground">{estimatedLabel}</span>
+            </p>
+          ) : null}
+        </>
       ) : null}
 
-      <div className="mt-4 space-y-3">
+      <div className={compactMobile ? "mt-3 space-y-2.5 lg:mt-4 lg:space-y-3" : "mt-4 space-y-3"}>
         <div>
           <label
             htmlFor="calculator-lead-phone"
@@ -146,7 +155,7 @@ export function CalculatorSubmitForm({
             id="calculator-lead-phone"
             value={phone}
             onChange={setPhone}
-            className={`mt-1.5 ${inputClassName}`}
+            className={`mt-1 ${compactMobile ? compactInputClassName : inputClassName}`}
           />
         </div>
 
@@ -165,7 +174,7 @@ export function CalculatorSubmitForm({
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Как к вам обращаться"
-            className={`mt-1.5 ${inputClassName}`}
+            className={`mt-1 ${compactMobile ? compactInputClassName : inputClassName}`}
           />
         </div>
       </div>
@@ -174,7 +183,7 @@ export function CalculatorSubmitForm({
         id="calculator-lead-privacy"
         checked={privacyAccepted}
         onChange={setPrivacyAccepted}
-        className="mt-3"
+        className="mt-2 lg:mt-3"
       />
 
       {error ? (
@@ -186,7 +195,7 @@ export function CalculatorSubmitForm({
       <Button
         type="submit"
         disabled={isSubmitting}
-        className={`mt-4 w-full ${compactMobile ? "max-lg:min-h-12 max-lg:text-base" : ""}`}
+        className={`mt-3 w-full ${compactMobile ? "max-lg:!h-11 max-lg:!min-h-11 max-lg:!py-0 max-lg:text-sm" : ""}`}
       >
         {isSubmitting ? "Отправляем…" : "Отправить расчёт"}
       </Button>

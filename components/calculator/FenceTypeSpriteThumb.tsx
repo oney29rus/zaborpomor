@@ -29,18 +29,23 @@ function FenceTypePlaceholder({ typeId }: { typeId: FenceTypeId }) {
 type FenceTypeSpriteThumbProps = {
   typeId: FenceTypeId;
   className?: string;
+  /** When true, thumb fills a fixed aspect box without distortion. */
+  contained?: boolean;
 };
 
 export function FenceTypeSpriteThumb({
   typeId,
   className = "",
+  contained = false,
 }: FenceTypeSpriteThumbProps) {
   const spriteStyle = getFenceTypeSpriteStyleById(typeId);
 
+  const shellClass = contained
+    ? `relative flex h-full w-full items-center justify-center overflow-hidden bg-white [container-type:size] ${className}`
+    : `flex items-center justify-center overflow-hidden bg-white px-2 py-1.5 [container-type:size] lg:px-2.5 lg:py-2 ${className}`;
+
   return (
-    <div
-      className={`flex items-center justify-center overflow-hidden bg-white px-2 py-1.5 [container-type:size] lg:px-2.5 lg:py-2 ${className}`}
-    >
+    <div className={shellClass}>
       {spriteStyle ? (
         <div
           role="img"

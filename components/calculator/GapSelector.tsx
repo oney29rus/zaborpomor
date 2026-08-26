@@ -8,6 +8,7 @@ import type { GapOption } from "@/lib/calculator/types";
 type GapSelectorProps = {
   value: GapOption;
   onChange: (value: GapOption) => void;
+  compactMobile?: boolean;
 };
 
 const GAP_OPTIONS: { id: GapOption; label: string; note?: string }[] = [
@@ -20,9 +21,13 @@ const GAP_OPTIONS: { id: GapOption; label: string; note?: string }[] = [
   { id: "closed", label: "Без зазора" },
 ];
 
-export function GapSelector({ value, onChange }: GapSelectorProps) {
+export function GapSelector({
+  value,
+  onChange,
+  compactMobile = false,
+}: GapSelectorProps) {
   return (
-    <div className="grid grid-cols-3 gap-2 sm:gap-3">
+    <div className={`grid grid-cols-3 ${compactMobile ? "gap-1.5" : "gap-2 sm:gap-3"}`}>
       {GAP_OPTIONS.map((option) => {
         const isActive = value === option.id;
 
@@ -32,13 +37,19 @@ export function GapSelector({ value, onChange }: GapSelectorProps) {
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(option.id)}
-            className={`rounded-lg border px-2 py-2.5 text-center transition-colors sm:px-3 lg:py-2 ${
+            className={`rounded-lg border text-center transition-colors lg:py-2 ${
+              compactMobile ? "min-h-10 px-1 py-2" : "px-2 py-2.5 sm:px-3"
+            } ${
               isActive
                 ? "border-accent bg-accent/5"
                 : "border-border bg-surface hover:border-muted"
             }`}
           >
-            <span className="block text-sm font-semibold text-foreground lg:text-[0.875rem]">
+            <span
+              className={`block font-semibold text-foreground lg:text-[0.875rem] ${
+                compactMobile ? "text-xs" : "text-sm"
+              }`}
+            >
               {option.label}
             </span>
             {option.note ? (

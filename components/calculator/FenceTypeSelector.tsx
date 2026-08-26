@@ -64,13 +64,10 @@ function MobileFenceTypeGrid({
   value: FenceTypeId;
   onChange: (value: FenceTypeId) => void;
 }) {
-  const lastIsOdd = fenceTypes.length % 2 !== 0;
-
   return (
-    <div className="grid grid-cols-2 gap-2 lg:hidden">
-      {fenceTypes.map((type, index) => {
+    <div className="grid grid-cols-2 gap-1.5 lg:hidden">
+      {fenceTypes.map((type) => {
         const isActive = value === type.id;
-        const isLastOdd = lastIsOdd && index === fenceTypes.length - 1;
         const pricePerMeter = resolveFenceFromPricePerMeter(type.id);
 
         return (
@@ -79,28 +76,29 @@ function MobileFenceTypeGrid({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(type.id)}
-            className={`relative flex min-h-[6rem] flex-col rounded-lg border p-1.5 text-left transition-colors ${
-              isLastOdd ? "col-span-2" : ""
-            } ${
+            className={`relative flex flex-col rounded-lg border p-1 text-left transition-colors ${
               isActive
                 ? "border-accent bg-accent/[0.06]"
                 : "border-border bg-surface hover:border-muted"
             }`}
           >
             {isActive ? (
-              <CheckIndicator className="absolute top-1.5 right-1.5" />
+              <CheckIndicator className="absolute top-1 right-1 z-10" />
             ) : null}
 
-            <FenceTypeSpriteThumb
-              typeId={type.id}
-              className="h-[52px] w-full shrink-0 rounded-md border border-border/40"
-            />
+            <div className="relative h-[52px] w-full overflow-hidden rounded-md border border-border/30 bg-white">
+              <FenceTypeSpriteThumb
+                typeId={type.id}
+                contained
+                className="absolute inset-0"
+              />
+            </div>
 
-            <span className="mt-1.5 line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-foreground">
+            <span className="mt-1 line-clamp-2 text-xs font-semibold leading-tight text-foreground">
               {type.label}
             </span>
 
-            <span className="mt-0.5 text-[0.6875rem] leading-tight text-muted">
+            <span className="mt-0.5 text-[0.6875rem] leading-none text-muted">
               {pricePerMeter !== null
                 ? `от ${formatPrice(pricePerMeter)}/м`
                 : "Цена по расчёту"}

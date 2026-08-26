@@ -48,7 +48,7 @@ export function CalculatorSection({
     className ??
     (isUniversal
       ? compactMobile
-        ? "scroll-mt-24 bg-background pt-6 pb-6 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
+        ? "scroll-mt-24 bg-background pt-4 pb-4 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
         : "scroll-mt-24 bg-background pt-12 pb-10 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
       : "bg-background pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-12 lg:pb-16");
   const titleClassName = compactMobile ? HOME_SECTION_TITLE : SECTION_TITLE;
@@ -61,7 +61,7 @@ export function CalculatorSection({
         <div className="max-w-2xl">
           <p className={SECTION_LABEL}>{label}</p>
           <h2 className={titleClassName}>{title}</h2>
-          <p className={descClassName}>{description}</p>
+          <p className={`${descClassName} ${compactMobile ? "max-lg:hidden" : ""}`}>{description}</p>
         </div>
 
         <div
