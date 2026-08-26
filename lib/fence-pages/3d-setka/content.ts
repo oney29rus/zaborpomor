@@ -10,7 +10,7 @@ import {
   fenceFaqHeightChoiceAnswer,
   fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
-  fencePriceFromLabel18,
+  fencePriceNoteAtHeight15,
 } from "@/lib/pricing/fence-price-labels";
 import { MONTAZH_IZ_MATERIALA_HREF } from "@/lib/services/mount-only";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
@@ -94,15 +94,15 @@ export const THREE_D_SETKA_PAGE: FencePageContent = {
         title: "Зелёная 3D-панель",
         description:
           "Классический вариант для дачи и частного участка — аккуратный современный вид без сплошного закрытия.",
-        priceNote: fencePriceFromLabel15("3d-setka"),
+        priceNote: fencePriceNoteAtHeight15("3d-setka"),
         image: WORK_IMAGES.threeDBerezka,
         imageAlt: WORK_IMAGE_ALTS.threeDBerezka,
       },
       {
         title: "Графитовая 3D-панель",
         description:
-          "Тёмное покрытие панелей — сдержанный вид, подходит для участка у дома и дороги.",
-        priceNote: fencePriceFromLabel18("3d-setka"),
+          "Тёмное покрытие панелей — сдержанный вид, подходит для участка у дома и дороги. Цвет не влияет на стоимость — цена зависит от высоты.",
+        priceNote: fencePriceNoteAtHeight15("3d-setka"),
         image: WORK_IMAGES.threeDKatuninec,
         imageAlt: WORK_IMAGE_ALTS.threeDKatuninec,
       },

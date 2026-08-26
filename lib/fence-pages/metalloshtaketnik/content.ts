@@ -1,5 +1,4 @@
 import {
-  getPricePerMeter,
   METALLOSHTAKETNIK_GAP_2CM_SURCHARGE_PER_METER,
   SLIDING_GATE_CALCULATOR_SURCHARGE,
   SWING_GATE_CALCULATOR_SURCHARGE,
@@ -11,6 +10,7 @@ import {
   fenceFaqHeightChoiceAnswer,
   fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
+  fencePriceNoteForAllHeights,
 } from "@/lib/pricing/fence-price-labels";
 
 import { FENCE_CATALOG_ALL_HREF } from "@/lib/catalog/fence-types";
@@ -20,8 +20,6 @@ import type { FencePageContent } from "@/lib/fence-pages/types";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
 
 const CANONICAL_PATH = "/zabory/metalloshtaketnik/";
-
-const SHAHMATKA_PRICE = getPricePerMeter("shtaketnik-shahmatka", 1.5);
 
 export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
   slug: "metalloshtaketnik",
@@ -107,11 +105,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
         value: `+${METALLOSHTAKETNIK_GAP_2CM_SURCHARGE_PER_METER.toLocaleString("ru-RU")} ₽/м`,
       },
 
-      {
-        label: "Шахматное заполнение",
-
-        value: `от ${SHAHMATKA_PRICE.toLocaleString("ru-RU")} ₽/м`,
-      },
+      ...buildFenceHeightPricingRows("shtaketnik-shahmatka", "Шахматка"),
     ],
 
     disclaimer:
@@ -227,7 +221,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
         description:
           "Штакетник устанавливается с двух сторон каркаса — лучше закрывает участок от посторонних взглядов и выглядит аккуратно с обеих сторон.",
 
-        priceNote: `от ${SHAHMATKA_PRICE.toLocaleString("ru-RU")} ₽/м`,
+        priceNote: fencePriceNoteForAllHeights("shtaketnik-shahmatka"),
 
         image: WORK_IMAGES.novodvinskNadezhda,
 
@@ -422,7 +416,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
         answer: fenceFaqPriceByHeightAnswer(
           "metalloshtaketnik",
-          `Шахматное заполнение — от ${SHAHMATKA_PRICE.toLocaleString("ru-RU")} ₽/м. Итог зависит от длины, зазора, ворот и особенностей участка.`,
+          `Шахматное заполнение: ${fencePriceNoteForAllHeights("shtaketnik-shahmatka")}. Итог зависит от длины, зазора, ворот и особенностей участка.`,
         ),
       },
 
@@ -449,8 +443,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
         question: "Что такое штакетник шахматкой?",
 
-        answer:
-          "Планки крепятся с двух сторон каркаса в шахматном порядке — забор лучше закрывает участок от посторонних взглядов и выглядит аккуратно с обеих сторон. Стоимость — от 6 000 ₽/м с материалом и монтажом.",
+        answer: `Планки крепятся с двух сторон каркаса в шахматном порядке — забор лучше закрывает участок от посторонних взглядов и выглядит аккуратно с обеих сторон. ${fenceFaqPriceByHeightAnswer("shtaketnik-shahmatka", "Итог зависит от длины, зазора, ворот и особенностей участка.")}`,
       },
 
       {

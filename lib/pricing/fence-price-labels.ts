@@ -27,6 +27,16 @@ export function fencePriceFromLabel20(fenceTypeId: FenceTypeId): string {
   return formatPricePerMeterLabel(getPricePerMeter(fenceTypeId, 2.0));
 }
 
+/** Компактная подпись с ценами для всех трёх высот. */
+export function fencePriceNoteForAllHeights(fenceTypeId: FenceTypeId): string {
+  return `${fencePriceFromLabel15(fenceTypeId)} при 1,5 м, ${fencePriceFromLabel18(fenceTypeId)} при 1,8 м, ${fencePriceFromLabel20(fenceTypeId)} при 2,0 м`;
+}
+
+/** Подпись минимальной цены с явной высотой 1,5 м. */
+export function fencePriceNoteAtHeight15(fenceTypeId: FenceTypeId): string {
+  return `${fencePriceFromLabel15(fenceTypeId)} при высоте 1,5 м`;
+}
+
 export function buildFenceHeightPricingRows(
   fenceTypeId: FenceTypeId,
   labelPrefix = "Высота",
