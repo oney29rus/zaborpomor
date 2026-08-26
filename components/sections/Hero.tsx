@@ -28,12 +28,12 @@ export function Hero() {
       >
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           <p
-            className={`order-1 ${SECTION_LABEL} max-lg:text-[0.6875rem] max-lg:leading-none max-lg:tracking-[0.1em] min-[360px]:max-lg:text-xs`}
+            className={`order-1 lg:order-none ${SECTION_LABEL} max-lg:text-[0.6875rem] max-lg:leading-none max-lg:tracking-[0.1em] min-[360px]:max-lg:text-xs`}
           >
             Производство и монтаж заборов
           </p>
 
-          <h1 className="order-2 max-w-xl font-bold text-foreground max-lg:mt-0 max-lg:text-[2rem] max-lg:leading-[1.06] max-lg:tracking-[-0.02em] min-[360px]:max-lg:text-[2.0625rem] min-[390px]:max-lg:text-[2.125rem] lg:mt-3 lg:max-w-2xl lg:text-[clamp(1.875rem,4.5vw,3.25rem)] lg:leading-[1.15] lg:tracking-tight xl:max-w-3xl">
+          <h1 className="order-2 lg:order-none max-w-xl font-bold text-foreground max-lg:mt-0 max-lg:text-[2rem] max-lg:leading-[1.06] max-lg:tracking-[-0.02em] min-[360px]:max-lg:text-[2.0625rem] min-[390px]:max-lg:text-[2.125rem] lg:mt-3 lg:max-w-2xl lg:text-[clamp(1.875rem,4.5vw,3.25rem)] lg:leading-[1.15] lg:tracking-tight xl:max-w-3xl">
             Заборы под ключ
             <br />
             в&nbsp;Архангельске,
@@ -45,7 +45,7 @@ export function Hero() {
             и&nbsp;Новодвинске
           </h1>
 
-          <p className="order-3 mt-1 max-w-xl text-muted max-lg:mt-0.5 max-lg:text-base max-lg:leading-[1.42] sm:text-lg lg:mt-2 lg:text-base lg:leading-snug">
+          <p className="order-3 lg:order-none mt-1 max-w-xl text-muted max-lg:mt-0.5 max-lg:text-base max-lg:leading-[1.42] sm:text-lg lg:mt-2 lg:text-base lg:leading-snug">
             Изготовим и установим забор в Архангельске, Северодвинске,
             Новодвинске и по области. Гарантия 24 месяца. Стоимость известна
             до начала работ.
