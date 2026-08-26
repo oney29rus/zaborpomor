@@ -22,12 +22,12 @@ export function MobileMenu() {
         <button
           type="button"
           aria-label="Закрыть меню"
-          className="fixed inset-0 top-[52px] z-[60] lg:hidden"
+          className="fixed inset-0 top-14 z-[60] lg:hidden"
           onClick={closeMenu}
         />
         <div
           id="mobile-menu"
-          className="fixed left-0 right-0 top-[52px] z-[61] max-h-[calc(100dvh-52px)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
+          className="fixed left-0 right-0 top-14 z-[61] max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
         >
           <nav className="flex flex-col px-3 py-1.5">
             {NAV_LINKS.map((link) => (

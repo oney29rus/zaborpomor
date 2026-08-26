@@ -13,12 +13,12 @@ import {
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-[52px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:grid lg:h-[72px] lg:grid-cols-[1fr_auto_1fr] lg:justify-normal">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:grid lg:h-[72px] lg:grid-cols-[1fr_auto_1fr] lg:justify-normal">
         <Link
           href="/"
           className="inline-flex shrink-0 items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          <span className="inline-flex h-[42px] items-center overflow-visible lg:h-[56px]">
+          <span className="inline-flex h-12 items-center overflow-visible lg:h-[56px]">
             <Image
               src={SITE_LOGO_SRC}
               alt={SITE_LOGO_ALT}
