@@ -32,20 +32,22 @@ export function PricingSection() {
         <div
           className={`${HOME_SECTION_CONTENT_MT} flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start lg:gap-6`}
         >
-          <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-4">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-2">
             {FEATURED_PRICE_PLANS.map((plan) => (
               <PriceCard key={plan.fenceTypeId} plan={plan} compactMobile />
             ))}
           </div>
 
-          <PricingIncluded compactMobile />
+          <div className="hidden lg:block">
+            <PricingIncluded compactMobile />
+          </div>
         </div>
 
-        <div className="mt-4 border-t border-border pt-4 lg:mt-6 lg:pt-5">
+        <div className="mt-3 hidden border-t border-border pt-4 lg:mt-6 lg:block lg:pt-5">
           <PricingAddons />
         </div>
 
-        <div className="mt-5 flex flex-col items-center gap-2.5 lg:mt-8 lg:gap-3">
+        <div className="mt-4 flex flex-col items-center gap-2 lg:mt-8 lg:gap-3">
           <Link href="#calculator" className={SECTION_LINK}>
             Рассчитать стоимость →
           </Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOOTER_CONFIG } from "@/lib/footer/navigation";
+import { FooterMobileNav } from "@/components/layout/FooterMobileNav";
 import { SECTION_CONTAINER } from "@/lib/section-styles";
 import type { FooterNavItem } from "@/lib/footer/types";
 
@@ -49,18 +50,18 @@ export function Footer() {
 
   return (
     <footer className="bg-[#141414] text-white">
-      <div className={`${SECTION_CONTAINER} py-8 sm:py-12 lg:py-14`}>
+      <div className={`${SECTION_CONTAINER} py-6 sm:py-12 lg:py-14`}>
         <div className="lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-10">
           <div className="max-w-sm lg:col-span-1">
             <p className="text-sm font-bold tracking-[0.12em] text-white">
               {company.name}
             </p>
-            <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-white/65 lg:mt-3">
+            <p className="mt-1.5 whitespace-pre-line text-sm leading-relaxed text-white/65 lg:mt-3">
               {company.description}
             </p>
             <a
               href={company.phoneHref}
-              className="mt-3 inline-flex text-base font-semibold text-white transition-colors hover:text-accent lg:mt-5"
+              className="mt-2 inline-flex text-base font-semibold text-white transition-colors hover:text-accent lg:mt-5"
             >
               {company.phone}
             </a>
@@ -69,14 +70,23 @@ export function Footer() {
                 href={company.social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-4 inline-flex ${linkClassName}`}
+                className={`mt-3 inline-flex ${linkClassName} lg:mt-4`}
               >
                 {company.social.label}
               </a>
             ) : null}
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-5 min-[480px]:grid-cols-2 lg:col-span-4 lg:mt-0 lg:grid-cols-4 lg:gap-8">
+          <FooterMobileNav
+            groups={[
+              fenceLinks,
+              cityLinks,
+              serviceLinks,
+              companyLinks,
+            ]}
+          />
+
+          <div className="mt-0 hidden grid-cols-4 gap-8 lg:col-span-4 lg:mt-0 lg:grid">
             <FooterNavGroup title={fenceLinks.title} items={fenceLinks.items} />
             <FooterNavGroup title={cityLinks.title} items={cityLinks.items} />
             <FooterNavGroup
@@ -90,7 +100,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-4 sm:mt-12 sm:pt-6">
+        <div className="mt-4 border-t border-white/10 pt-3 sm:mt-12 sm:pt-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-sm text-white/50">{legal.copyright}</p>
             {legal.privacy.published ? (

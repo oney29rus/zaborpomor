@@ -3,19 +3,22 @@ import type { ProcessStep as ProcessStepType } from "@/lib/process/steps";
 type ProcessStepProps = {
   step: ProcessStepType;
   variant?: "horizontal" | "vertical";
+  compactMobile?: boolean;
 };
 
 export function ProcessStepItem({
   step,
   variant = "horizontal",
+  compactMobile = false,
 }: ProcessStepProps) {
   const isHighlighted = step.highlighted;
+  const isCompactVertical = variant === "vertical" && compactMobile;
 
   return (
     <article className={variant === "horizontal" ? "min-w-0 flex-1" : ""}>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
         <span
-          className={`text-sm font-semibold tracking-[0.12em] ${
+          className={`text-xs font-semibold tracking-[0.12em] lg:text-sm ${
             isHighlighted ? "text-accent" : "text-accent/80"
           }`}
         >
@@ -32,14 +35,22 @@ export function ProcessStepItem({
       </div>
 
       <h3
-        className={`mt-2 text-base font-bold leading-snug lg:mt-2.5 lg:text-[0.9375rem] ${
-          isHighlighted ? "text-accent" : "text-foreground"
-        }`}
+        className={`font-bold leading-snug lg:mt-2.5 lg:text-[0.9375rem] ${
+          isCompactVertical
+            ? "mt-0.5 text-sm"
+            : "mt-2 text-base lg:mt-2.5 lg:text-[0.9375rem]"
+        } ${isHighlighted ? "text-accent" : "text-foreground"}`}
       >
         {step.title}
       </h3>
 
-      <p className="mt-1.5 text-sm leading-snug text-muted lg:mt-1 lg:text-[0.8125rem] lg:leading-snug">
+      <p
+        className={`leading-snug text-muted lg:mt-1 lg:text-[0.8125rem] lg:leading-snug ${
+          isCompactVertical
+            ? "mt-0.5 line-clamp-2 text-xs"
+            : "mt-1.5 text-sm lg:mt-1"
+        }`}
+      >
         {step.description}
       </p>
     </article>

@@ -18,7 +18,7 @@ function FenceImage({
     <div
       className={`relative overflow-hidden rounded-xl lg:rounded-2xl ${
         compactMobile
-          ? "aspect-[4/3] lg:aspect-[16/10]"
+          ? "aspect-[5/4] lg:aspect-[16/10]"
           : "aspect-[4/3] lg:aspect-[16/10]"
       }`}
     >
@@ -45,11 +45,11 @@ export function FenceTypeCard({ item, compactMobile = false }: FenceTypeCardProp
         <FenceImage item={item} compactMobile={compactMobile} />
       </Link>
 
-      <div className={`flex flex-1 flex-col ${compactMobile ? "mt-2 lg:mt-4" : "mt-3 sm:mt-4"}`}>
+      <div className={`flex flex-1 flex-col ${compactMobile ? "mt-1.5 lg:mt-4" : "mt-3 sm:mt-4"}`}>
         <h3
           className={`font-bold tracking-tight text-foreground ${
             compactMobile
-              ? "text-sm leading-snug sm:text-xl lg:text-[1.375rem]"
+              ? "text-sm leading-snug lg:text-[1.375rem]"
               : "text-xl sm:text-[1.375rem]"
           }`}
         >
@@ -72,7 +72,7 @@ export function FenceTypeCard({ item, compactMobile = false }: FenceTypeCardProp
         <p
           className={`leading-relaxed text-muted ${
             compactMobile
-              ? "mt-1 hidden text-sm sm:mt-2 sm:block sm:text-[0.9375rem] lg:block"
+              ? "mt-1 hidden lg:mt-2 lg:block lg:text-[0.9375rem]"
               : "mt-2 text-sm sm:text-[0.9375rem]"
           }`}
         >
@@ -82,13 +82,13 @@ export function FenceTypeCard({ item, compactMobile = false }: FenceTypeCardProp
         <div
           className={`flex flex-wrap items-center ${
             compactMobile
-              ? "mt-1.5 gap-x-3 gap-y-1 sm:mt-3 sm:gap-x-5 sm:gap-y-2 lg:mt-4"
+              ? "mt-1 gap-x-2 lg:mt-4 lg:gap-x-5"
               : "mt-3 gap-x-5 gap-y-2 sm:mt-4"
           }`}
         >
           <Link
             href={item.href}
-            className="text-xs font-semibold text-foreground transition-colors hover:text-accent sm:text-sm"
+            className="text-xs font-semibold text-foreground transition-colors hover:text-accent lg:text-sm"
           >
             Подробнее →
           </Link>
@@ -96,7 +96,7 @@ export function FenceTypeCard({ item, compactMobile = false }: FenceTypeCardProp
             href="#calculator"
             className={`inline-flex items-center rounded-lg border border-border font-semibold text-foreground transition-colors hover:border-muted hover:bg-background ${
               compactMobile
-                ? "hidden min-h-10 px-3 text-xs sm:inline-flex sm:px-4 sm:text-sm lg:inline-flex"
+                ? "hidden min-h-10 px-4 text-sm lg:inline-flex"
                 : "min-h-10 px-4 text-sm"
             }`}
           >

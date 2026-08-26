@@ -31,7 +31,7 @@ export function AdditionalServicesSection({
   const { label, title: defaultTitle, description } = ADDITIONAL_SERVICES_SECTION;
   const sectionTitle = title ?? defaultTitle;
   const sectionPy = compactMobile
-    ? "py-8 sm:py-14 lg:py-16"
+    ? "py-6 sm:py-14 lg:py-16"
     : SECTION_PY;
   const titleClassName = compactMobile ? HOME_SECTION_TITLE : SECTION_TITLE;
   const descClassName = compactMobile ? HOME_SECTION_DESC : SECTION_DESC;
@@ -61,7 +61,7 @@ export function AdditionalServicesSection({
               key={service.id}
               className={`lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}`}
             >
-              <AdditionalServiceCard service={service} />
+              <AdditionalServiceCard service={service} compactMobile={compactMobile} />
             </div>
           ))}
         </div>

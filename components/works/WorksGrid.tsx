@@ -23,6 +23,8 @@ type WorksGridProps = {
   /** Все карточки остаются в DOM (SEO /raboty/), фильтр скрывает через CSS. */
   preserveAllInDom?: boolean;
   cardVariant?: "default" | "portfolio";
+  /** Hide cards after N on viewports below lg (homepage mobile). */
+  mobileMaxVisible?: number;
 };
 
 function hasProjectPhotos(project: WorkProject): boolean {
@@ -41,6 +43,7 @@ export function WorksGrid({
   gridLayout = "default",
   preserveAllInDom = false,
   cardVariant = "default",
+  mobileMaxVisible,
 }: WorksGridProps) {
   const [activeFilter, setActiveFilter] = useState<WorkFilterId>(initialFilter);
 
@@ -89,12 +92,20 @@ export function WorksGrid({
 
   const topSpacing = showFilters ? "mt-5 lg:mt-4" : "";
 
-  const renderCard = (project: WorkProject) => {
+  const renderCard = (project: WorkProject, index: number) => {
     const hidden =
       preserveAllInDom && !visibleSlugSet.has(project.slug) ? "hidden" : "";
+    const mobileHidden =
+      mobileMaxVisible !== undefined && index >= mobileMaxVisible
+        ? "max-lg:hidden"
+        : "";
 
     return (
-      <div key={project.id} className={hidden} aria-hidden={hidden ? true : undefined}>
+      <div
+        key={project.id}
+        className={`${hidden} ${mobileHidden}`.trim()}
+        aria-hidden={hidden ? true : undefined}
+      >
         <ProjectCard project={project} {...cardProps} />
       </div>
     );
@@ -125,27 +136,29 @@ export function WorksGrid({
         <div
           className={`grid grid-cols-2 items-stretch gap-3 ${topSpacing} lg:grid-cols-3 lg:gap-5`}
         >
-          {projectsToRender.map(renderCard)}
+          {projectsToRender.map((project, index) => renderCard(project, index))}
         </div>
       ) : mobileLayout === "stack" ? (
         gridLayout === "three-two" ? (
           <>
             <div className={stackGridClass}>
-              {projectsToRender.slice(0, 3).map(renderCard)}
+              {projectsToRender.slice(0, 3).map((project, index) => renderCard(project, index))}
             </div>
             {projectsToRender.length > 3 ? (
               <div className="mt-5 grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:mx-auto lg:max-w-[calc(66.666%-0.625rem)] lg:grid-cols-2 lg:gap-5">
-                {projectsToRender.slice(3).map(renderCard)}
+                {projectsToRender.slice(3).map((project, index) => renderCard(project, index + 3))}
               </div>
             ) : null}
           </>
         ) : (
-          <div className={stackGridClass}>{projectsToRender.map(renderCard)}</div>
+          <div className={stackGridClass}>
+            {projectsToRender.map((project, index) => renderCard(project, index))}
+          </div>
         )
       ) : (
         <>
           <div className={`${topSpacing} hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3`}>
-            {projectsToRender.map(renderCard)}
+            {projectsToRender.map((project, index) => renderCard(project, index))}
           </div>
 
           <div

@@ -74,7 +74,7 @@ export function ProjectCard({
           ) : null}
 
           {project.description ? (
-            <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-foreground/85">
+            <p className="mt-1 hidden line-clamp-2 text-sm leading-relaxed text-foreground/85 lg:block">
               {project.description}
             </p>
           ) : null}

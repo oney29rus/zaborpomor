@@ -10,6 +10,7 @@ type ServicePhotoProps = {
   alt: string;
   /** Компактная карточка каталога */
   variant?: "card" | "hero";
+  compactMobile?: boolean;
   priority?: boolean;
   className?: string;
   objectPosition?: string;
@@ -25,11 +26,17 @@ export function ServicePhoto({
   src,
   alt,
   variant = "card",
+  compactMobile = false,
   priority = false,
   className = "",
   objectPosition,
 }: ServicePhotoProps) {
-  const containerClass = `${VARIANT_CLASSES[variant]} ${className}`.trim();
+  const compactCardClass =
+    compactMobile && variant === "card"
+      ? "max-lg:aspect-[3/2] max-lg:rounded-lg"
+      : "";
+  const containerClass =
+    `${VARIANT_CLASSES[variant]} ${compactCardClass} ${className}`.trim();
   const filename = getPublicImageFilename(src);
   const resolvedObjectPosition =
     objectPosition ??

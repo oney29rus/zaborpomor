@@ -17,19 +17,21 @@ export function PriceCard({ plan, compactMobile = false }: PriceCardProps) {
         compactMobile ? "px-3.5 py-3 lg:px-5 lg:py-4" : "px-4 py-4 lg:px-5 lg:py-4"
       }`}
     >
-      <h3 className="text-base font-bold text-foreground lg:text-[1.0625rem]">
+      <h3 className="text-sm font-bold text-foreground lg:text-[1.0625rem]">
         {title}
       </h3>
 
-      <p className="mt-1 text-lg font-bold tracking-tight text-foreground lg:mt-1.5 lg:text-xl">
+      <p className="mt-0.5 text-base font-bold tracking-tight text-foreground lg:mt-1.5 lg:text-xl">
         {priceLabel}
       </p>
 
-      <p className="mt-1 text-sm leading-snug text-muted lg:mt-1.5">{plan.caption}</p>
+      <p className="mt-0.5 hidden text-sm leading-snug text-muted lg:mt-1.5 lg:block">
+        {plan.caption}
+      </p>
 
       <Link
         href="#calculator"
-        className="mt-2 inline-flex text-sm font-semibold text-accent transition-colors hover:text-accent-hover lg:mt-3"
+        className="mt-1.5 inline-flex text-xs font-semibold text-accent transition-colors hover:text-accent-hover lg:mt-3 lg:text-sm"
       >
         Рассчитать стоимость
       </Link>

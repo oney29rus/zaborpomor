@@ -31,7 +31,7 @@ export function CityMountOnlyPromo({
   compactMobile = false,
 }: CityMountOnlyPromoProps) {
   const sectionPy = compactMobile
-    ? "py-8 sm:py-12 lg:py-14"
+    ? "py-6 sm:py-12 lg:py-14"
     : FENCE_SECTION_PY;
   const titleClassName = compactMobile ? HOME_SECTION_TITLE : SECTION_TITLE;
 
@@ -44,24 +44,26 @@ export function CityMountOnlyPromo({
           }`}
         >
           <div className="min-w-0 max-w-2xl">
-            <p className={SECTION_LABEL}>{label}</p>
-            <h2 className={`${titleClassName} max-w-xl`}>{title}</h2>
+            <p className={`${SECTION_LABEL} max-lg:sr-only`}>{label}</p>
+            <h2 className={`${titleClassName} max-w-xl max-lg:text-[clamp(1.25rem,4vw,1.75rem)]`}>
+              {title}
+            </h2>
             {description ? (
-              <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
+              <p className="mt-1 text-sm leading-snug text-muted sm:text-base lg:mt-2">
                 {description}
               </p>
             ) : null}
-            <div className="mt-3">
-              <p className="text-lg font-bold tracking-tight text-foreground">
+            <div className="mt-2 lg:mt-3">
+              <p className="text-base font-bold tracking-tight text-foreground sm:text-lg">
                 {priceLabel}
               </p>
-              <p className="mt-0.5 text-sm text-muted">{priceCaption}</p>
+              <p className="mt-0.5 hidden text-sm text-muted sm:block">{priceCaption}</p>
             </div>
           </div>
 
           <Link
             href={ctaHref}
-            className="mt-4 inline-flex shrink-0 text-sm font-semibold text-accent transition-colors hover:text-accent-hover lg:mt-0"
+            className="mt-3 inline-flex shrink-0 text-sm font-semibold text-accent transition-colors hover:text-accent-hover lg:mt-0"
           >
             {ctaLabel}
           </Link>

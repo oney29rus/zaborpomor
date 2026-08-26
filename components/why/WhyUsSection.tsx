@@ -28,11 +28,11 @@ export function WhyUsSection() {
         </div>
 
         <div
-          className={`${HOME_SECTION_CONTENT_MT} flex flex-col gap-5 lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-10`}
+          className={`${HOME_SECTION_CONTENT_MT} flex flex-col gap-4 lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-10`}
         >
           <WarrantyHighlight compactMobile />
 
-          <div className="grid gap-4 sm:gap-7 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-7 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-6">
             {WHY_BENEFITS.map((benefit) => (
               <BenefitItem key={benefit.step} benefit={benefit} compactMobile />
             ))}

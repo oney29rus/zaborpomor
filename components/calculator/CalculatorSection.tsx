@@ -48,7 +48,7 @@ export function CalculatorSection({
     className ??
     (isUniversal
       ? compactMobile
-        ? "scroll-mt-24 bg-background pt-8 pb-8 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
+        ? "scroll-mt-24 bg-background pt-6 pb-6 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
         : "scroll-mt-24 bg-background pt-12 pb-10 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16"
       : "bg-background pt-10 pb-12 sm:pt-12 sm:pb-14 lg:pt-12 lg:pb-16");
   const titleClassName = compactMobile ? HOME_SECTION_TITLE : SECTION_TITLE;

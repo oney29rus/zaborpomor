@@ -33,19 +33,19 @@ export function ProcessTimelineDesktop() {
 export function ProcessTimelineMobile({ compactMobile = false }: { compactMobile?: boolean }) {
   return (
     <ol
-      className={`relative border-l border-border pl-5 lg:hidden ${
-        compactMobile ? "space-y-3.5" : "space-y-5"
+      className={`relative border-l border-border pl-4 lg:hidden ${
+        compactMobile ? "space-y-2.5" : "space-y-5"
       }`}
     >
       {PROCESS_STEPS.map((step) => (
         <li key={step.id} className="relative">
           <span
             aria-hidden="true"
-            className={`absolute top-1.5 -left-[1.375rem] h-2 w-2 rounded-full ${
+            className={`absolute top-1 -left-[1.125rem] h-1.5 w-1.5 rounded-full ${
               step.highlighted ? "bg-accent" : "bg-border"
             }`}
           />
-          <ProcessStepItem step={step} variant="vertical" />
+          <ProcessStepItem step={step} variant="vertical" compactMobile={compactMobile} />
         </li>
       ))}
     </ol>

@@ -1,11 +1,15 @@
-/** Curated portfolio slugs for the homepage (max 8). */
+/** Curated portfolio slugs for the homepage — first 4 visible on mobile, all 8 on desktop. */
+
 export const HOMEPAGE_FEATURED_WORK_SLUGS = [
   "profnastil-shirsha",
-  "profnastil-snt-sever",
   "metalloshtaketnik-snt-avtomobilist",
   "3d-katuninec",
-  "setka-ocink",
-  "setka-pvh-25",
   "derevyannyy-shtaketnik-zaostrovye",
+  "profnastil-snt-sever",
+  "setka-ocinc",
+  "setka-pvh-25",
   "metalloshtaketnik-derevnya-buty",
 ] as const;
+
+/** How many work cards to show on mobile homepage (first N slugs from the list above). */
+export const HOMEPAGE_MOBILE_WORKS_VISIBLE = 4;

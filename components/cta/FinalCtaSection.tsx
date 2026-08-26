@@ -39,7 +39,7 @@ export function FinalCtaSection({
 }: FinalCtaSectionProps = {}) {
   const titleLines = title.split("\n");
   const sectionPy = compactMobile
-    ? "py-8 sm:py-12 lg:py-14"
+    ? "py-6 sm:py-12 lg:py-14"
     : SECTION_PY_COMPACT;
 
   return (
@@ -50,7 +50,7 @@ export function FinalCtaSection({
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70 sm:text-[0.8125rem]">
               {label}
             </p>
-            <h2 className="mt-1.5 text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight tracking-tight text-white lg:mt-2">
+            <h2 className="mt-1 text-[clamp(1.375rem,4.5vw,2.5rem)] font-bold leading-tight tracking-tight text-white sm:mt-1.5 lg:mt-2">
               {titleLines.map((line, index) => (
                 <span key={line}>
                   {index > 0 ? (
@@ -63,7 +63,7 @@ export function FinalCtaSection({
                 </span>
               ))}
             </h2>
-            <p className="mt-2 max-w-xl text-base leading-snug text-white/85 sm:mt-3 sm:text-[1.0625rem] sm:leading-relaxed">
+            <p className="mt-1.5 max-w-xl text-sm leading-snug text-white/85 sm:mt-3 sm:text-[1.0625rem] sm:leading-relaxed">
               {description}
             </p>
 
@@ -80,9 +80,9 @@ export function FinalCtaSection({
             </div>
           </div>
 
-          <LeadForm className="mt-5 lg:mt-0" />
+          <LeadForm className="mt-4 lg:mt-0" />
 
-          <div className="mt-4 lg:hidden">
+          <div className="mt-3 lg:hidden">
             <p className="text-sm text-white/70">Или позвоните:</p>
             <a
               href={PHONE_HREF}
@@ -92,7 +92,10 @@ export function FinalCtaSection({
             </a>
           </div>
 
-          <TrustLine items={trustItems} className="mt-3 lg:hidden lg:mt-5" />
+          <TrustLine
+            items={trustItems}
+            className="mt-2 text-xs lg:hidden lg:mt-5 lg:text-sm"
+          />
         </div>
       </div>
     </section>

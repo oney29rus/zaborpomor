@@ -29,27 +29,27 @@ export function MobileMenu() {
           id="mobile-menu"
           className="fixed left-0 right-0 top-[57px] z-[61] max-h-[calc(100dvh-57px)] overflow-y-auto border-b border-border bg-white shadow-md lg:hidden"
         >
-          <nav className="flex flex-col px-3 py-2">
+          <nav className="flex flex-col px-3 py-1.5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground transition-colors hover:bg-background"
+                className="rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-foreground transition-colors hover:bg-background"
                 onClick={closeMenu}
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <div className="border-t border-border px-3 py-2.5">
+          <div className="border-t border-border px-3 py-2">
             <a
               href={PHONE_HREF}
-              className="block px-3 py-1.5 text-base font-semibold text-foreground"
+              className="block px-3 py-1 text-[0.9375rem] font-semibold text-foreground"
               onClick={closeMenu}
             >
               {PHONE}
             </a>
-            <div className="mt-2 px-3">
+            <div className="mt-1.5 px-3">
               <HeaderCalculatorCta
                 className="min-h-10 w-full py-2 text-sm"
                 onClick={closeMenu}

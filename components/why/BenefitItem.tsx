@@ -14,7 +14,9 @@ export function BenefitItem({ benefit, compactMobile = false }: BenefitItemProps
       </p>
       <h3
         className={`font-bold leading-snug text-foreground ${
-          compactMobile ? "mt-1.5 text-base sm:mt-2 sm:text-lg" : "mt-2 text-base sm:text-lg"
+          compactMobile
+            ? "mt-1 text-sm sm:mt-2 sm:text-base lg:text-lg"
+            : "mt-2 text-base sm:text-lg"
         }`}
       >
         {benefit.title}

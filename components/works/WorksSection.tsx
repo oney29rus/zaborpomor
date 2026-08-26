@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HOMEPAGE_MOBILE_WORKS_VISIBLE } from "@/lib/homepage/featured-works";
 import {
   HOME_SECTION_CONTENT_MT,
   HOME_SECTION_DESC,
@@ -34,7 +35,7 @@ export function WorksSection({
 
   return (
     <section
-      className={`bg-[#f5f5f5] ${compactMobile ? "py-8 sm:py-14 lg:py-16" : SECTION_PY}`}
+      className={`bg-[#f5f5f5] ${compactMobile ? "py-6 sm:py-14 lg:py-16" : SECTION_PY}`}
     >
       <div className={SECTION_CONTAINER}>
         <div className="max-w-2xl">
@@ -54,6 +55,7 @@ export function WorksSection({
             showFilters={showFilters}
             mobileLayout={mobileLayout}
             cardVariant={compactMobile ? "portfolio" : "default"}
+            mobileMaxVisible={compactMobile ? HOMEPAGE_MOBILE_WORKS_VISIBLE : undefined}
           />
         </div>
 

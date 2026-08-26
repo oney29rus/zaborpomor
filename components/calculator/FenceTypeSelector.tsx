@@ -79,7 +79,7 @@ function MobileFenceTypeGrid({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(type.id)}
-            className={`relative flex min-h-[6.75rem] flex-col rounded-lg border p-2 text-left transition-colors ${
+            className={`relative flex min-h-[6rem] flex-col rounded-lg border p-1.5 text-left transition-colors ${
               isLastOdd ? "col-span-2" : ""
             } ${
               isActive
@@ -93,7 +93,7 @@ function MobileFenceTypeGrid({
 
             <FenceTypeSpriteThumb
               typeId={type.id}
-              className="h-[60px] w-full shrink-0 rounded-md border border-border/40"
+              className="h-[52px] w-full shrink-0 rounded-md border border-border/40"
             />
 
             <span className="mt-1.5 line-clamp-2 text-[0.8125rem] font-semibold leading-snug text-foreground">
