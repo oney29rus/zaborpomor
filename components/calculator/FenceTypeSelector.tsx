@@ -65,7 +65,7 @@ function MobileFenceTypeGrid({
   onChange: (value: FenceTypeId) => void;
 }) {
   return (
-    <div className="grid grid-cols-2 gap-1.5 lg:hidden">
+    <div className="grid grid-cols-2 gap-1 lg:hidden">
       {fenceTypes.map((type) => {
         const isActive = value === type.id;
         const pricePerMeter = resolveFenceFromPricePerMeter(type.id);
@@ -76,17 +76,17 @@ function MobileFenceTypeGrid({
             type="button"
             aria-pressed={isActive}
             onClick={() => onChange(type.id)}
-            className={`relative flex flex-col rounded-lg border p-1 text-left transition-colors ${
+            className={`relative flex flex-col rounded-lg border px-1 py-0.5 text-left transition-colors ${
               isActive
                 ? "border-accent bg-accent/[0.06]"
                 : "border-border bg-surface hover:border-muted"
             }`}
           >
             {isActive ? (
-              <CheckIndicator className="absolute top-1 right-1 z-10" />
+              <CheckIndicator className="absolute top-0.5 right-0.5 z-10 h-3 w-3" />
             ) : null}
 
-            <div className="relative h-[52px] w-full overflow-hidden rounded-md border border-border/30 bg-white">
+            <div className="relative h-[40px] w-full overflow-hidden rounded border border-border/30 bg-white">
               <FenceTypeSpriteThumb
                 typeId={type.id}
                 contained
@@ -94,11 +94,11 @@ function MobileFenceTypeGrid({
               />
             </div>
 
-            <span className="mt-1 line-clamp-2 text-xs font-semibold leading-tight text-foreground">
+            <span className="mt-0.5 line-clamp-2 text-[0.6875rem] font-semibold leading-tight text-foreground">
               {type.label}
             </span>
 
-            <span className="mt-0.5 text-[0.6875rem] leading-none text-muted">
+            <span className="mt-px text-[0.625rem] leading-none text-muted">
               {pricePerMeter !== null
                 ? `от ${formatPrice(pricePerMeter)}/м`
                 : "Цена по расчёту"}

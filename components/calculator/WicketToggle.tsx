@@ -12,8 +12,8 @@ export function WicketToggle({
   compactMobile = false,
 }: WicketToggleProps) {
   const compactRow = (
-    <div className="flex items-center justify-between gap-3 py-0.5">
-      <span className="text-sm font-semibold text-foreground">Нужна калитка</span>
+    <div className="flex items-center justify-between gap-2 py-0">
+      <span className="text-xs font-semibold text-foreground">Нужна калитка</span>
       <button
         type="button"
         role="switch"

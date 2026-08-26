@@ -34,7 +34,7 @@ export function CalculatorResult({
     result.kind === "priced" && canShowPricePerMeter(result);
 
   const shellClass = compactMobile
-    ? "mt-2 border-t border-border pt-2.5 max-lg:mt-2 max-lg:border-border/80 lg:mt-0 lg:border-t-0 lg:pt-0"
+    ? "mt-1.5 border-t border-border pt-2 max-lg:mt-1.5 max-lg:border-border/80 lg:mt-0 lg:border-t-0 lg:pt-0"
     : "border-t border-border pt-4 lg:border-t-0 lg:pt-0";
 
   const summaryLine = buildCalculatorSummaryLine(params, parameterFlags);
@@ -71,7 +71,7 @@ export function CalculatorResult({
           <p
             className={`font-bold leading-none tracking-tight text-foreground ${
               compactMobile
-                ? "mt-0.5 text-[1.375rem] lg:mt-2 lg:text-[2rem]"
+                ? "mt-0.5 text-[1.25rem] lg:mt-2 lg:text-[2rem]"
                 : "mt-2 text-[clamp(1.875rem,4vw,2.25rem)] lg:text-[2rem]"
             }`}
           >
@@ -108,7 +108,7 @@ export function CalculatorResult({
         {!isFormOpen ? (
           <Button
             type="button"
-            className={`w-full ${compactMobile ? "max-lg:!h-11 max-lg:!min-h-11 max-lg:!py-0 max-lg:text-sm" : ""}`}
+            className={`w-full ${compactMobile ? "max-lg:!h-10 max-lg:!min-h-10 max-lg:!py-0 max-lg:text-sm" : ""}`}
             onClick={handleOpenForm}
           >
             Получить точный расчёт

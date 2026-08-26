@@ -57,7 +57,7 @@ function FieldLabel({
 }) {
   return (
     <p
-      className={`font-semibold text-foreground ${compactMobile ? "mb-0.5 text-xs lg:mb-2 lg:text-sm" : "mb-2 text-sm"}`}
+      className={`font-semibold text-foreground ${compactMobile ? "mb-0 text-xs lg:mb-2 lg:text-sm" : "mb-2 text-sm"}`}
     >
       {children}
     </p>
@@ -136,9 +136,11 @@ export function CalculatorParameters({
   );
 
   return (
-    <div className={compactMobile ? "space-y-2 lg:space-y-3.5" : "space-y-4 lg:space-y-3.5"}>
+    <div className={compactMobile ? "space-y-1.5 lg:space-y-3.5" : "space-y-4 lg:space-y-3.5"}>
       <div>
-        <FieldLabel compactMobile={compactMobile}>Длина</FieldLabel>
+        {!compactMobile ? (
+          <FieldLabel compactMobile={compactMobile}>Длина</FieldLabel>
+        ) : null}
         <LengthControl
           value={length}
           compactMobile={compactMobile}

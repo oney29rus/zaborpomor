@@ -19,7 +19,7 @@ export function CalculatorAdvancedSection({
         type="button"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="flex w-full items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-left text-sm font-semibold text-foreground lg:hidden"
+        className="flex w-full items-center justify-between rounded-lg border border-border bg-surface px-2.5 py-1.5 text-left text-xs font-semibold text-foreground lg:hidden"
       >
         Дополнительные параметры
         <span

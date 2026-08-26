@@ -13,16 +13,23 @@ type GatesSelectorProps = {
   compactMobile?: boolean;
 };
 
-const GATE_OPTIONS: { id: GateType; label: string; note?: string }[] = [
-  { id: "none", label: "Без ворот" },
+const GATE_OPTIONS: {
+  id: GateType;
+  label: string;
+  compactLabel: string;
+  note?: string;
+}[] = [
+  { id: "none", label: "Без ворот", compactLabel: "Без ворот" },
   {
     id: "swing",
     label: "Распашные ворота",
+    compactLabel: "Распашные",
     note: `+${formatPrice(SWING_GATE_CALCULATOR_SURCHARGE)}`,
   },
   {
     id: "sliding",
     label: "Откатные ворота",
+    compactLabel: "Откатные",
     note: `+${formatPrice(SLIDING_GATE_CALCULATOR_SURCHARGE)}`,
   },
 ];
@@ -36,21 +43,25 @@ export function GatesSelector({
     <div
       className={
         compactMobile
-          ? "grid grid-cols-3 gap-1.5"
+          ? "grid grid-cols-3 gap-1"
           : "grid gap-3 sm:grid-cols-3"
       }
     >
       {GATE_OPTIONS.map((option) => {
         const isActive = value === option.id;
+        const displayLabel = compactMobile ? option.compactLabel : option.label;
 
         return (
           <button
             key={option.id}
             type="button"
             aria-pressed={isActive}
+            aria-label={option.label}
             onClick={() => onChange(option.id)}
-            className={`rounded-lg border text-left transition-colors lg:py-2 ${
-              compactMobile ? "min-h-10 px-1.5 py-2" : "px-3 py-2.5"
+            className={`rounded-lg border text-center transition-colors lg:py-2 ${
+              compactMobile
+                ? "min-h-9 px-1 py-1.5 lg:min-h-10 lg:px-3 lg:py-2.5 lg:text-left"
+                : "px-3 py-2.5 text-left"
             } ${
               isActive
                 ? "border-accent bg-accent/5"
@@ -59,10 +70,12 @@ export function GatesSelector({
           >
             <span
               className={`block font-semibold text-foreground lg:text-[0.875rem] ${
-                compactMobile ? "text-[0.6875rem] leading-tight" : "text-sm"
+                compactMobile
+                  ? "text-[0.6875rem] leading-tight lg:text-sm"
+                  : "text-sm"
               }`}
             >
-              {option.label}
+              {displayLabel}
             </span>
             {option.note && !compactMobile ? (
               <span className="mt-0.5 block text-xs text-muted">
@@ -75,4 +88,3 @@ export function GatesSelector({
     </div>
   );
 }
-

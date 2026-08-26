@@ -15,11 +15,11 @@ function CompactToggleRow({
   onChange,
 }: Omit<OptionToggleProps, "compactMobile">) {
   return (
-    <div className="flex items-center justify-between gap-3 py-0.5">
+    <div className="flex items-center justify-between gap-2 py-0">
       <div className="min-w-0">
-        <span className="text-sm font-semibold text-foreground">{label}</span>
+        <span className="text-xs font-semibold text-foreground">{label}</span>
         {note ? (
-          <span className="mt-0.5 block text-xs text-muted">{note}</span>
+          <span className="mt-px block text-[0.625rem] text-muted">{note}</span>
         ) : null}
       </div>
       <button

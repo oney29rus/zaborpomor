@@ -30,56 +30,78 @@ export function LengthControl({
   };
 
   const btnClass = compactMobile
-    ? "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface text-base font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-40 lg:h-10 lg:w-10 lg:text-lg"
+    ? "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-surface text-base font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-40 lg:h-10 lg:w-10 lg:text-lg"
     : "inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-border bg-surface text-xl font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-40 lg:h-10 lg:w-10 lg:text-lg";
 
   const inputClass = compactMobile
-    ? "h-10 w-full rounded-lg border border-border bg-surface px-4 pr-10 text-center text-base font-semibold text-foreground outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent lg:h-10 lg:text-base"
+    ? "h-9 w-full rounded-lg border border-border bg-surface px-3 pr-8 text-center text-sm font-semibold text-foreground outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent lg:h-10 lg:px-4 lg:pr-10 lg:text-base"
     : "h-12 w-full rounded-lg border border-border bg-surface px-4 pr-10 text-center text-lg font-semibold text-foreground outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent lg:h-10 lg:text-base";
+
+  const controls = (
+    <>
+      <label htmlFor="fence-length" className="sr-only">
+        Длина забора в метрах
+      </label>
+      <button
+        type="button"
+        aria-label="Уменьшить длину"
+        onClick={decrease}
+        disabled={value <= LENGTH_MIN}
+        className={btnClass}
+      >
+        −
+      </button>
+
+      <div className="relative min-w-0 flex-1">
+        <input
+          id="fence-length"
+          type="number"
+          inputMode="numeric"
+          min={LENGTH_MIN}
+          max={LENGTH_MAX}
+          step={LENGTH_STEP}
+          value={value}
+          onChange={(event) => handleInputChange(event.target.value)}
+          className={inputClass}
+        />
+        <span
+          className={`pointer-events-none absolute inset-y-0 flex items-center text-muted ${
+            compactMobile ? "right-2.5 text-xs lg:right-4 lg:text-sm" : "right-4 text-sm"
+          }`}
+        >
+          м
+        </span>
+      </div>
+
+      <button
+        type="button"
+        aria-label="Увеличить длину"
+        onClick={increase}
+        disabled={value >= LENGTH_MAX}
+        className={btnClass}
+      >
+        +
+      </button>
+    </>
+  );
 
   return (
     <div>
-      <div className={`flex items-center ${compactMobile ? "gap-2" : "gap-3"}`}>
-        <label htmlFor="fence-length" className="sr-only">
-          Длина забора в метрах
-        </label>
-        <button
-          type="button"
-          aria-label="Уменьшить длину"
-          onClick={decrease}
-          disabled={value <= LENGTH_MIN}
-          className={btnClass}
-        >
-          −
-        </button>
-
-        <div className="relative min-w-0 flex-1">
-          <input
-            id="fence-length"
-            type="number"
-            inputMode="numeric"
-            min={LENGTH_MIN}
-            max={LENGTH_MAX}
-            step={LENGTH_STEP}
-            value={value}
-            onChange={(event) => handleInputChange(event.target.value)}
-            className={inputClass}
-          />
-          <span className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-sm text-muted">
-            м
+      {compactMobile ? (
+        <div className="flex items-center gap-2 lg:block">
+          <span
+            aria-hidden="true"
+            className="w-11 shrink-0 text-xs font-semibold text-foreground lg:hidden"
+          >
+            Длина
           </span>
+          <div className="flex min-w-0 flex-1 items-center gap-1.5 lg:gap-2">
+            {controls}
+          </div>
         </div>
-
-        <button
-          type="button"
-          aria-label="Увеличить длину"
-          onClick={increase}
-          disabled={value >= LENGTH_MAX}
-          className={btnClass}
-        >
-          +
-        </button>
-      </div>
+      ) : (
+        <div className="flex items-center gap-3">{controls}</div>
+      )}
 
       <input
         type="range"

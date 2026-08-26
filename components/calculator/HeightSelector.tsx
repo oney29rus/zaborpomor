@@ -31,7 +31,7 @@ export function HeightSelector({
             onClick={() => onChange(height)}
             className={`rounded-lg border font-semibold transition-colors ${
               compactMobile
-                ? "min-h-10 px-1.5 py-2 text-sm lg:px-4 lg:py-3 lg:text-base"
+                ? "min-h-9 px-1 py-1.5 text-sm lg:min-h-10 lg:px-4 lg:py-3 lg:text-base"
                 : "px-3 py-3 text-base"
             } ${
               isActive

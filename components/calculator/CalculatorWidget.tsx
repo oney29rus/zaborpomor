@@ -172,7 +172,7 @@ export function CalculatorWidget({
   if (isUniversal) {
     return (
       <div className={shellClassName}>
-        <div className="flex flex-col gap-2 max-lg:gap-2 lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)] lg:items-start lg:gap-6">
+        <div className="flex flex-col gap-1.5 max-lg:gap-1.5 lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)] lg:items-start lg:gap-6">
           <div className="min-w-0">
             <CalculatorPanelHeader
               step="01"
@@ -189,7 +189,7 @@ export function CalculatorWidget({
             />
           </div>
 
-          <div className="min-w-0 max-lg:border-t max-lg:border-border/80 max-lg:pt-2 lg:border-l lg:border-border lg:pl-6">
+          <div className="min-w-0 max-lg:border-t max-lg:border-border/80 max-lg:pt-1.5 lg:border-l lg:border-border lg:pl-6">
             <CalculatorPanelHeader
               step="02"
               title="Параметры"
