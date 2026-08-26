@@ -1,0 +1,128 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Timeweb
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Log deploy target commit
+        run: |
+          echo "Deploy triggered for commit: ${{ github.sha }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor }}"
+
+      - name: Deploy over SSH
+        id: ssh-deploy
+        uses: appleboy/ssh-action@v1.2.2
+        env:
+          DEPLOY_SHA: ${{ github.sha }}
+        with:
+          host: ${{ secrets.TIMEWEB_HOST }}
+          username: ${{ secrets.TIMEWEB_USER }}
+          key: ${{ secrets.TIMEWEB_SSH_KEY }}
+          port: ${{ secrets.TIMEWEB_PORT || 22 }}
+          envs: DEPLOY_SHA
+          script_stop: true
+          command_timeout: 25m
+          script: |
+            set -euo pipefail
+
+            APP_DIR="/var/www/zaborpomor"
+            cd "$APP_DIR"
+
+            echo "=== Production deploy started ==="
+            echo "GitHub commit: ${DEPLOY_SHA}"
+
+            if [ -n "$(git status --porcelain)" ]; then
+              echo "ERROR: server working tree is dirty — aborting deploy"
+              git status --short
+              exit 1
+            fi
+
+            OLD_SHA="$(git rev-parse HEAD)"
+            echo "OLD_SHA=${OLD_SHA}"
+
+            git fetch origin main
+            git checkout main
+            git pull --ff-only origin main
+
+            NEW_SHA="$(git rev-parse HEAD)"
+            echo "NEW_SHA=${NEW_SHA}"
+
+            if git diff --name-only "${OLD_SHA}" "${NEW_SHA}" | grep -qE '^(package\.json|package-lock\.json)$'; then
+              echo "Dependencies changed — running npm ci"
+              env -u NODE_ENV npm ci
+            else
+              echo "Dependencies unchanged — skipping npm ci"
+            fi
+
+            if [ ! -f .env.local ]; then
+              echo "ERROR: .env.local is missing after git pull"
+              exit 1
+            fi
+
+            ENV_PERMS="$(stat -c '%a' .env.local)"
+            if [ "${ENV_PERMS}" != "600" ]; then
+              echo "WARNING: .env.local permissions are ${ENV_PERMS}, expected 600"
+            else
+              echo ".env.local permissions OK (600)"
+            fi
+
+            echo "=== Building application ==="
+            rm -rf .next
+            npm run build
+
+            echo "=== Restarting zaborpomor service ==="
+            systemctl restart zaborpomor
+            sleep 3
+
+            if ! systemctl is-active --quiet zaborpomor; then
+              echo "ERROR: zaborpomor service is not active after restart"
+              systemctl status zaborpomor --no-pager || true
+              echo "Rollback hint: checkout ${OLD_SHA}, rebuild, and restart"
+              exit 1
+            fi
+
+            if ! systemctl is-active --quiet nginx; then
+              echo "ERROR: nginx is not active"
+              systemctl status nginx --no-pager || true
+              echo "Rollback hint: checkout ${OLD_SHA}, rebuild, and restart"
+              exit 1
+            fi
+
+            echo "zaborpomor: active"
+            echo "nginx: active"
+            echo "=== Deploy script finished successfully ==="
+            echo "OLD_SHA=${OLD_SHA}"
+            echo "NEW_SHA=${NEW_SHA}"
+
+      - name: Smoke test production
+        run: |
+          echo "=== Smoke testing https://zaborpomor.ru ==="
+          curl --fail --silent --show-error --output /dev/null --write-out "Homepage: HTTP %{http_code}\n" https://zaborpomor.ru/
+          curl --fail --silent --show-error --output /dev/null --write-out "robots.txt: HTTP %{http_code}\n" https://zaborpomor.ru/robots.txt
+          echo "Smoke tests passed"
+
+      - name: Deploy failed — rollback hint
+        if: failure()
+        run: |
+          echo "::error::Production deploy failed."
+          echo "If the service was restarted with a broken build, rollback manually on the server:"
+          echo "  ssh root@213.171.12.145"
+          echo "  cd /var/www/zaborpomor"
+          echo "  git log --oneline -5"
+          echo "  git checkout <previous-good-commit>"
+          echo "  rm -rf .next && npm run build"
+          echo "  systemctl restart zaborpomor"
