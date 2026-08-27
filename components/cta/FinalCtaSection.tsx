@@ -12,6 +12,7 @@ type FinalCtaSectionProps = {
   label?: string;
   title?: string;
   description?: string;
+  submitLabel?: string;
   trustItems?: readonly string[];
   compactMobile?: boolean;
 };
@@ -34,6 +35,7 @@ export function FinalCtaSection({
   label = "Рассчитаем ваш забор",
   title = "Узнайте стоимость забора для вашего участка",
   description = "Оставьте номер телефона — уточним длину, материал и комплектацию и рассчитаем стоимость вашего забора.",
+  submitLabel,
   trustItems = DEFAULT_TRUST_ITEMS,
   compactMobile = false,
 }: FinalCtaSectionProps = {}) {
@@ -80,7 +82,7 @@ export function FinalCtaSection({
             </div>
           </div>
 
-          <LeadForm className="mt-4 lg:mt-0" />
+          <LeadForm className="mt-4 lg:mt-0" submitLabel={submitLabel} />
 
           <div className="mt-3 lg:hidden">
             <p className="text-sm text-white/70">Или позвоните:</p>

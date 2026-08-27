@@ -64,7 +64,11 @@ export default function HomePage() {
         <WhyUsSection />
         <ProcessSection />
         <FaqSection />
-        <FinalCtaSection compactMobile />
+        <FinalCtaSection
+          compactMobile
+          description="Оставьте номер телефона — уточним длину, тип забора и комплектацию и назовём предварительную стоимость."
+          submitLabel="Рассчитать мой забор"
+        />
       </main>
       <Footer />
     </>

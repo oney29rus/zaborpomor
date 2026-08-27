@@ -11,12 +11,16 @@ import { isCompletePhone } from "@/lib/phone/mask";
 
 type LeadFormProps = {
   className?: string;
+  submitLabel?: string;
 };
 
 const inputClassName =
   "h-12 w-full min-w-0 rounded-lg border border-border bg-background px-4 text-base text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent";
 
-export function LeadForm({ className = "" }: LeadFormProps) {
+export function LeadForm({
+  className = "",
+  submitLabel = "Получить расчёт",
+}: LeadFormProps) {
   const pathname = usePathname();
   const [phone, setPhone] = useState("");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
@@ -114,7 +118,7 @@ export function LeadForm({ className = "" }: LeadFormProps) {
         disabled={isSubmitting}
         className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-70"
       >
-        {isSubmitting ? "Отправляем…" : "Получить расчёт"}
+        {isSubmitting ? "Отправляем…" : submitLabel}
       </button>
 
       <PrivacyConsent
