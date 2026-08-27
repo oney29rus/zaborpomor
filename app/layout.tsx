@@ -3,8 +3,9 @@ import { Geist } from "next/font/google";
 import { Suspense } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AttributionCapture } from "@/components/analytics/AttributionCapture";
+import { AnalyticsClickBridge } from "@/components/analytics/AnalyticsClickBridge";
 import { YandexMetrika } from "@/components/analytics/YandexMetrika";
-import { YandexMetrikaGoalsBridge } from "@/components/analytics/YandexMetrikaGoalsBridge";
+import { YandexMetrikaRouteTracker } from "@/components/analytics/YandexMetrikaRouteTracker";
 import { defaultMetadata } from "@/lib/metadata";
 import { buildOrganizationJsonLd } from "@/lib/seo/json-ld";
 import "./globals.css";
@@ -24,8 +25,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <Suspense fallback={null}>
           <AttributionCapture />
+          <YandexMetrikaRouteTracker />
         </Suspense>
-        <YandexMetrikaGoalsBridge />
+        <AnalyticsClickBridge />
         <YandexMetrika />
         <JsonLd data={organizationJsonLd} />
         {children}

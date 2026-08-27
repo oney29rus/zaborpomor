@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { TrackedPhoneLink } from "@/components/leads/TrackedPhoneLink";
-import { trackEvent } from "@/lib/analytics/track";
 import type { CalculatorParameterFlags } from "@/lib/calculator/config";
 import { canShowPricePerMeter } from "@/lib/calculator/display";
 import { formatPrice } from "@/lib/calculator/format";
@@ -41,10 +40,6 @@ export function CalculatorResult({
 
   const handleOpenForm = () => {
     setIsFormOpen(true);
-    trackEvent("calculator_submit_opened", {
-      fenceType: params.fenceType,
-      length: params.length,
-    });
   };
 
   useEffect(() => {

@@ -63,7 +63,7 @@ export function LeadForm({ className = "" }: LeadFormProps) {
       return;
     }
 
-    trackEvent("lead_submitted", {
+    trackEvent("lead_success", {
       source: "cta",
       pagePath: pathname,
     });

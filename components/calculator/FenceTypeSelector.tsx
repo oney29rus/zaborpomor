@@ -1,7 +1,6 @@
 "use client";
 
 import { FenceTypeSpriteThumb } from "@/components/calculator/FenceTypeSpriteThumb";
-import { trackEvent } from "@/lib/analytics/track";
 import { resolveFenceFromPricePerMeter } from "@/lib/calculator/display";
 import { formatPrice } from "@/lib/calculator/format";
 import {
@@ -194,13 +193,6 @@ export function FenceTypeSelector({
   const fenceTypes = resolveFenceTypes(allowedTypes, sortByPrice);
 
   const handleChange = (nextType: FenceTypeId) => {
-    if (nextType !== value) {
-      trackEvent("fence_type_click", {
-        fenceType: nextType,
-        previousFenceType: value,
-      });
-    }
-
     onChange(nextType);
   };
 

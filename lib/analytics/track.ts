@@ -1,11 +1,6 @@
-export type AnalyticsEventName =
-  | "calculator_started"
-  | "calculator_changed"
-  | "calculator_submit_opened"
-  | "lead_submitted"
-  | "phone_clicked"
-  | "city_click"
-  | "fence_type_click";
+import { reachMetrikaGoal, type MetrikaGoalName } from "@/lib/analytics/metrika";
+
+export type AnalyticsEventName = MetrikaGoalName;
 
 export type AnalyticsPayload = Record<string, string | number | boolean | null>;
 
@@ -28,6 +23,8 @@ export function trackEvent(
   window.dispatchEvent(new CustomEvent("zp-analytics", { detail }));
 
   window.dataLayer?.push(detail);
+
+  reachMetrikaGoal(name, detail);
 
   if (process.env.NODE_ENV === "development") {
     console.info("[analytics]", name, payload);

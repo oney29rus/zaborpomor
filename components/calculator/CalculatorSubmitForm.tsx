@@ -94,7 +94,7 @@ export function CalculatorSubmitForm({
       return;
     }
 
-    trackEvent("lead_submitted", {
+    trackEvent("lead_success", {
       source: "calculator",
       pagePath: pathname,
       fenceType: params.fenceType,

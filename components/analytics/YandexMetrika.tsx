@@ -1,22 +1,7 @@
 "use client";
 
 import Script from "next/script";
-
-function getMetrikaCounterId(): number | null {
-  const raw = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.trim();
-
-  if (!raw) {
-    return null;
-  }
-
-  const counterId = Number(raw);
-
-  if (!Number.isFinite(counterId) || counterId <= 0) {
-    return null;
-  }
-
-  return counterId;
-}
+import { getMetrikaCounterId } from "@/lib/analytics/metrika";
 
 export function YandexMetrika() {
   const counterId = getMetrikaCounterId();
@@ -39,10 +24,14 @@ export function YandexMetrika() {
           })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
           ym(${counterId}, "init", {
+            ssr: true,
+            webvisor: true,
             clickmap: true,
-            trackLinks: true,
+            ecommerce: "dataLayer",
+            referrer: document.referrer,
+            url: location.href,
             accurateTrackBounce: true,
-            webvisor: true
+            trackLinks: true
           });
         `}
       </Script>

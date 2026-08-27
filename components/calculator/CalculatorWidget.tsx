@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   getFenceTypeSelectorVariant,
   shouldShowFenceTypeSelector,
@@ -27,7 +27,6 @@ const UNIVERSAL_LENGTH_DEFAULT = 20;
 const PAGE_LENGTH_DEFAULT = LENGTH_DEFAULT;
 const PAGE_HEIGHT_DEFAULT: FenceHeight = 1.8;
 const UNIVERSAL_HEIGHT_DEFAULT: FenceHeight = 1.5;
-const CALCULATOR_CHANGE_DEBOUNCE_MS = 600;
 
 const SHARED_DEFAULT_PARAMS = {
   gateType: "none" as const,
@@ -71,8 +70,7 @@ export function CalculatorWidget({
   const [params, setParams] = useState<CalculatorParams>(() =>
     buildInitialParams({ config, defaultFenceType, initialParams }),
   );
-  const changeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const hasStartedRef = useRef(false);
+  const hasInteractionRef = useRef(false);
 
   const result = useMemo(() => calculateFenceCost(params), [params]);
 
@@ -81,51 +79,24 @@ export function CalculatorWidget({
   const isUniversal = config.mode === "universal";
   const compactMobile = isUniversal;
 
-  useEffect(() => {
-    if (hasStartedRef.current) {
+  const trackFirstCalculatorInteraction = () => {
+    if (hasInteractionRef.current) {
       return;
     }
 
-    hasStartedRef.current = true;
-    trackEvent("calculator_started", {
+    hasInteractionRef.current = true;
+    trackEvent("calculator_interaction", {
       mode: config.mode,
       fenceType: params.fenceType,
     });
-  }, [config.mode, params.fenceType]);
-
-  useEffect(
-    () => () => {
-      if (changeTimeoutRef.current) {
-        clearTimeout(changeTimeoutRef.current);
-      }
-    },
-    [],
-  );
-
-  const trackCalculatorChange = (nextParams: CalculatorParams) => {
-    if (changeTimeoutRef.current) {
-      clearTimeout(changeTimeoutRef.current);
-    }
-
-    changeTimeoutRef.current = setTimeout(() => {
-      trackEvent("calculator_changed", {
-        fenceType: nextParams.fenceType,
-        length: nextParams.length,
-        height: nextParams.height,
-        gateType: nextParams.gateType,
-      });
-    }, CALCULATOR_CHANGE_DEBOUNCE_MS);
   };
 
   const update = <K extends keyof CalculatorParams>(
     key: K,
     value: CalculatorParams[K],
   ) => {
-    setParams((prev) => {
-      const next = { ...prev, [key]: value };
-      trackCalculatorChange(next);
-      return next;
-    });
+    trackFirstCalculatorInteraction();
+    setParams((prev) => ({ ...prev, [key]: value }));
   };
 
   const parametersBlock = (

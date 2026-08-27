@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { PHONE, PHONE_HREF } from "@/lib/constants";
-import { trackEvent } from "@/lib/analytics/track";
 
 type TrackedPhoneLinkProps = {
   className?: string;
@@ -19,11 +18,7 @@ export function TrackedPhoneLink({
     <a
       href={PHONE_HREF}
       className={className}
-      onClick={() =>
-        trackEvent("phone_clicked", {
-          location,
-        })
-      }
+      data-analytics-location={location}
     >
       {children}
     </a>
