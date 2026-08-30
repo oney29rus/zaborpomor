@@ -22,7 +22,7 @@ import {
 
 import type { CityPageContent } from "@/lib/geo-pages/types";
 
-
+import { SEVERODVINSK_LOCAL_SERVICE_LINKS } from "@/lib/geo-local-pages/severodvinsk/shared";
 
 export const SEVERODVINSK_MOUNT_ONLY = {
 
@@ -529,6 +529,14 @@ export const SEVERODVINSK_PAGE: CityPageContent = {
     works: "Наши работы в Северодвинске и рядом",
 
     additionalServices: "Дополнительные услуги в Северодвинске",
+
+  },
+
+  localServiceLinks: {
+
+    title: "Популярные услуги в Северодвинске",
+
+    links: SEVERODVINSK_LOCAL_SERVICE_LINKS,
 
   },
 

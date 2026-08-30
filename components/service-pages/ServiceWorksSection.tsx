@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { WorksGrid } from "@/components/works/WorksGrid";
 import {
   FENCE_SECTION_PY,
   SECTION_CONTAINER,
@@ -8,11 +10,13 @@ import {
 type ServiceWorksSectionProps = {
   title: string;
   sectionId?: string;
+  projectSlugs?: string[];
 };
 
 export function ServiceWorksSection({
   title,
   sectionId,
+  projectSlugs,
 }: ServiceWorksSectionProps) {
   return (
     <section
@@ -25,11 +29,32 @@ export function ServiceWorksSection({
         </div>
 
         <div className={SECTION_CONTENT_MT}>
-          <div className="rounded-xl border border-dashed border-border bg-surface px-5 py-8 text-center sm:px-6">
-            <p className="text-sm leading-relaxed text-muted">
-              Фото объектов скоро будут добавлены в портфолио.
-            </p>
-          </div>
+          {projectSlugs && projectSlugs.length > 0 ? (
+            <>
+              <WorksGrid
+                showFilters={false}
+                projectSlugs={projectSlugs}
+                compactPlaceholder
+                enableLightbox
+                mobileLayout="stack"
+                linkProjects
+              />
+              <div className="mt-6 text-center">
+                <Link
+                  href="/raboty/"
+                  className="text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
+                >
+                  Смотреть все работы →
+                </Link>
+              </div>
+            </>
+          ) : (
+            <div className="rounded-xl border border-dashed border-border bg-surface px-5 py-8 text-center sm:px-6">
+              <p className="text-sm leading-relaxed text-muted">
+                Фото объектов скоро будут добавлены в портфолио.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>

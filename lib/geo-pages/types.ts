@@ -76,4 +76,12 @@ export type CityPageContent = {
       label: string;
     };
   };
+  localServiceLinks?: {
+    title: string;
+    links: readonly {
+      label: string;
+      href: string;
+      description: string;
+    }[];
+  };
 };

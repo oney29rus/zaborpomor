@@ -48,6 +48,7 @@ export type ServicePageContent = {
   automation?: ServicePageAutomation;
   works: {
     title: string;
+    projectSlugs?: string[];
   };
   process: FencePageProcess;
   faq: FencePageFaq;

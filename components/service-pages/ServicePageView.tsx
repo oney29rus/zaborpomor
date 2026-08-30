@@ -77,6 +77,7 @@ export function ServicePageView({ content }: ServicePageViewProps) {
         <ServiceWorksSection
           title={content.works.title}
           sectionId={`${content.slug}-works`}
+          projectSlugs={content.works.projectSlugs}
         />
         <FenceProcessSection
           title={content.process.title}

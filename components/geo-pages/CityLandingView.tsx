@@ -20,6 +20,7 @@ import { CityGeoSection } from "./CityGeoSection";
 import { CityMountOnlyPromo } from "./CityMountOnlyPromo";
 import { CityTurnkeyIncludesSection } from "./CityTurnkeyIncludesSection";
 import { CityOtherCitiesSection } from "./CityOtherCitiesSection";
+import { CityServiceLinksSection } from "./CityServiceLinksSection";
 import { CityPricingSection } from "./CityPricingSection";
 import { CityProcessSection } from "./CityProcessSection";
 import { CityWorksSection } from "./CityWorksSection";
@@ -63,6 +64,13 @@ export function CityLandingView({ content, mountOnlyPromo }: CityLandingViewProp
           slugs={content.fenceTypeSlugs}
           imageOverrides={content.fenceImages}
         />
+
+        {content.localServiceLinks ? (
+          <CityServiceLinksSection
+            title={content.localServiceLinks.title}
+            links={content.localServiceLinks.links}
+          />
+        ) : null}
 
         <CityPricingSection
           title={content.sections.pricing}
