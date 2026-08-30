@@ -10,6 +10,7 @@ import {
   MONTAZH_IZ_MATERIALA_RANGE_LABEL,
 } from "@/lib/services/mount-only";
 import type { CityPageContent } from "@/lib/geo-pages/types";
+import { NOVODVINSK_LOCAL_SERVICE_LINKS } from "@/lib/geo-local-pages/novodvinsk/shared";
 
 export const NOVODVINSK_MOUNT_ONLY = {
   label: "МОНТАЖ ИЗ ВАШЕГО МАТЕРИАЛА",
@@ -110,7 +111,7 @@ export const NOVODVINSK_PAGE: CityPageContent = {
         description:
           "Классический вариант для въезда на участок — изготовим и установим под ваш забор.",
         priceNote: `от ${SWING_GATE_STANDALONE_FROM.toLocaleString("ru-RU")} ₽`,
-        href: "/vorota/raspashnye/",
+        href: "/novodvinsk/vorota/raspashnye/",
         published: true,
       },
       {
@@ -118,7 +119,7 @@ export const NOVODVINSK_PAGE: CityPageContent = {
         description:
           "Подходят, когда рядом с проёмом мало места для открывания створок.",
         priceNote: `от ${SLIDING_GATE_STANDALONE_FROM.toLocaleString("ru-RU")} ₽`,
-        href: "/vorota/otkatnye/",
+        href: "/novodvinsk/vorota/otkatnye/",
         published: true,
       },
       {
@@ -126,7 +127,7 @@ export const NOVODVINSK_PAGE: CityPageContent = {
         description:
           "Комплект автоматики для откатных ворот — удобное управление без выхода из машины.",
         priceNote: `+${GATE_AUTOMATION_NICE_PRICE.toLocaleString("ru-RU")} ₽`,
-        href: "/vorota/otkatnye/",
+        href: "/novodvinsk/vorota/otkatnye/",
         published: true,
       },
     ],
@@ -208,7 +209,7 @@ export const NOVODVINSK_PAGE: CityPageContent = {
         answer:
           "Да. Изготавливаем и монтируем распашные и откатные ворота, калитки. На объектах в СНТ «Дружба» и «Надежда» уже устанавливали откатные ворота вместе с забором.",
         answerLink: {
-          href: "/vorota/otkatnye/",
+          href: "/novodvinsk/vorota/otkatnye/",
           label: "Откатные ворота",
           after: " и распашные — с ценами на отдельных страницах.",
         },
@@ -260,5 +261,9 @@ export const NOVODVINSK_PAGE: CityPageContent = {
     calculator: "Рассчитайте стоимость забора в Новодвинске",
     works: "Наши работы в Новодвинске и рядом",
     additionalServices: "Дополнительные услуги в Новодвинске",
+  },
+  localServiceLinks: {
+    title: "Популярные услуги в Новодвинске",
+    links: NOVODVINSK_LOCAL_SERVICE_LINKS,
   },
 };
