@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { createPageMetadata } from "@/lib/seo/metadata";
-import { formatWorkLocation } from "./format";
+import { workProjectPath } from "@/lib/urls";import { formatWorkLocation } from "./format";
 import { WORK_PROJECTS } from "./projects";
 import type { WorkProject } from "./types";
 
@@ -89,7 +89,7 @@ export function buildWorkProjectDescription(project: WorkProject): string {
 }
 
 export function buildWorkProjectMetadata(project: WorkProject): Metadata {
-  const path = `/raboty/${project.slug}/`;
+  const path = workProjectPath(project.slug);
   const image = project.images[0] ?? undefined;
 
   return createPageMetadata({
@@ -137,8 +137,8 @@ export function getSimilarWorkProjects(
 }
 
 export function getWorkProjectRoutes(): string[] {
-  return getPublishableWorkProjects().map(
-    (project) => `/raboty/${project.slug}/`,
+  return getPublishableWorkProjects().map((project) =>
+    workProjectPath(project.slug),
   );
 }
 

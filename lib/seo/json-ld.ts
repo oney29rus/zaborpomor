@@ -1,5 +1,6 @@
-import { PHONE, SITE_URL } from "@/lib/constants";
+import { PHONE } from "@/lib/constants";
 import type { FaqItem } from "@/lib/faq/types";
+import { normalizeInternalPath, toAbsoluteUrl } from "@/lib/urls";
 
 export type BreadcrumbJsonLdItem = {
   name: string;
@@ -14,7 +15,7 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbJsonLdItem[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${SITE_URL}${item.path}`,
+      item: toAbsoluteUrl(normalizeInternalPath(item.path)),
     })),
   };
 }
@@ -24,7 +25,7 @@ export function buildOrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: "Заборы Поморья",
-    url: SITE_URL,
+    url: toAbsoluteUrl("/"),
     telephone: PHONE,
     areaServed: [
       "Архангельск",
@@ -47,11 +48,11 @@ export function buildServiceJsonLd(options: {
     "@type": "Service",
     name: options.name,
     description: options.description,
-    url: `${SITE_URL}${options.url}`,
+    url: toAbsoluteUrl(options.url),
     provider: {
       "@type": "HomeAndConstructionBusiness",
       name: "Заборы Поморья",
-      url: SITE_URL,
+      url: toAbsoluteUrl("/"),
       telephone: PHONE,
     },
     ...(options.areaServed

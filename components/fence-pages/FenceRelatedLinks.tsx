@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import type { FencePageRelatedFences } from "@/lib/fence-pages/types";
 import {
   FENCE_SECTION_PY,
@@ -21,9 +21,9 @@ export function FenceRelatedLinks({ relatedFences }: FenceRelatedLinksProps) {
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             {relatedFences.links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={`text-sm ${SECTION_LINK}`}>
+                <InternalLink href={link.href} className={`text-sm ${SECTION_LINK}`}>
                   {link.label} →
-                </Link>
+                </InternalLink>
               </li>
             ))}
           </ul>

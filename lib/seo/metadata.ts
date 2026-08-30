@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { normalizeInternalPath } from "@/lib/urls";
 type CreatePageMetadataOptions = {
   title: string;
   description: string;
@@ -24,6 +25,7 @@ export function createPageMetadata({
   image,
 }: CreatePageMetadataOptions): Metadata {
   const normalizedTitle = normalizePageTitle(title);
+  const canonicalPath = normalizeInternalPath(path);
 
   return {
     title: {
@@ -31,12 +33,12 @@ export function createPageMetadata({
     },
     description,
     alternates: {
-      canonical: path,
+      canonical: canonicalPath,
     },
     openGraph: {
       title: normalizedTitle,
       description,
-      url: path,
+      url: canonicalPath,
       type: "website",
       ...(image
         ? {

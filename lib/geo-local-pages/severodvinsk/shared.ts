@@ -1,6 +1,6 @@
 import type { FencePageBreadcrumb, FencePageGeo } from "@/lib/fence-pages/types";
 
-export const SEVERODVINSK_CITY_PATH = "/severodvinsk/";
+export const SEVERODVINSK_CITY_PATH = "/severodvinsk";
 
 export function severodvinskBreadcrumbs(
   serviceLabel: string,
@@ -40,10 +40,10 @@ export function buildSeverodvinskGeo(options: {
     servicePhrase: options.servicePhrase,
     cityLinks: [
       { label: "Северодвинск", href: SEVERODVINSK_CITY_PATH, published: true },
-      { label: "Архангельск", href: "/arhangelsk/", published: true },
-      { label: "Новодвинск", href: "/novodvinsk/", published: true },
-      { label: "Приморский район", href: "/primorskiy-rayon/", published: true },
-      { label: "Холмогоры", href: "/holmogory/", published: true },
+      { label: "Архангельск", href: "/arhangelsk", published: true },
+      { label: "Новодвинск", href: "/novodvinsk", published: true },
+      { label: "Приморский район", href: "/primorskiy-rayon", published: true },
+      { label: "Холмогоры", href: "/holmogory", published: true },
     ],
     areaMentions: [],
   };
@@ -52,22 +52,22 @@ export function buildSeverodvinskGeo(options: {
 export const SEVERODVINSK_LOCAL_SERVICE_LINKS = [
   {
     label: "Заборы из профнастила",
-    href: "/severodvinsk/zabory/profnastil/",
+    href: "/severodvinsk/zabory/profnastil",
     description: "Сплошное ограждение из профлиста с установкой под ключ",
   },
   {
     label: "Заборы из металлоштакетника",
-    href: "/severodvinsk/zabory/metalloshtaketnik/",
+    href: "/severodvinsk/zabory/metalloshtaketnik",
     description: "Металлический штакетник и евроштакетник с монтажом",
   },
   {
     label: "Откатные ворота",
-    href: "/severodvinsk/vorota/otkatnye/",
+    href: "/severodvinsk/vorota/otkatnye",
     description: "Изготовление и установка откатных ворот",
   },
   {
     label: "Распашные ворота",
-    href: "/severodvinsk/vorota/raspashnye/",
+    href: "/severodvinsk/vorota/raspashnye",
     description: "Распашные ворота для забора с калиткой",
   },
 ] as const;

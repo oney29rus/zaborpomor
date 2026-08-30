@@ -13,11 +13,11 @@ export type CitiesHubCard = {
 export const CITIES_HUB_SECONDARY_AREAS = [
   {
     name: "Приморский район",
-    href: "/primorskiy-rayon/",
+    href: "/primorskiy-rayon",
   },
   {
     name: "Холмогорский район",
-    href: "/holmogory/",
+    href: "/holmogory",
   },
 ] as const;
 
@@ -27,7 +27,7 @@ export const CITIES_HUB_CARDS: CitiesHubCard[] = [
     shortDescription: "Заборы под ключ и монтаж из вашего материала.",
     fullDescription:
       "Заборы под ключ, ворота, калитки и монтаж из материала заказчика.",
-    href: "/arhangelsk/",
+    href: "/arhangelsk",
     ctaLabel: "Заборы в Архангельске →",
     image: WORK_IMAGES.profnastilShirsha,
     imageAlt: WORK_IMAGE_ALTS.profnastilShirsha,
@@ -37,7 +37,7 @@ export const CITIES_HUB_CARDS: CitiesHubCard[] = [
     shortDescription: "Монтаж заборов в городе и ближайших СНТ.",
     fullDescription:
       "Устанавливаем заборы в Северодвинске и ближайших СНТ.",
-    href: "/severodvinsk/",
+    href: "/severodvinsk",
     ctaLabel: "Заборы в Северодвинске →",
     image: WORK_IMAGES.profnastilSntSever,
     imageAlt: WORK_IMAGE_ALTS.profnastilSntSever,
@@ -47,7 +47,7 @@ export const CITIES_HUB_CARDS: CitiesHubCard[] = [
     shortDescription: "Заборы для домов, дач и участков.",
     fullDescription:
       "Заборы для домов, дач и участков в Новодвинске и рядом.",
-    href: "/novodvinsk/",
+    href: "/novodvinsk",
     ctaLabel: "Заборы в Новодвинске →",
     image: WORK_IMAGES.novodvinskAvtomobilist,
     imageAlt: WORK_IMAGE_ALTS.novodvinskAvtomobilist,

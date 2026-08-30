@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import {
   FENCE_SECTION_PY,
   SECTION_CONTAINER,
@@ -38,7 +38,7 @@ export function CityServiceLinksSection({
         >
           {links.map((link) => (
             <li key={link.href}>
-              <Link
+              <InternalLink
                 href={link.href}
                 className="flex h-full flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/40"
               >
@@ -51,7 +51,7 @@ export function CityServiceLinksSection({
                 <span className={`mt-3 text-sm ${SECTION_LINK}`}>
                   Подробнее →
                 </span>
-              </Link>
+              </InternalLink>
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "./assets";
 import type { WorkFilter, WorkFilterId, WorkProject } from "./types";
 
-export const WORKS_ALL_HREF = "/raboty/";
+export const WORKS_ALL_HREF = "/raboty";
 
 export const WORK_FILTERS: WorkFilter[] = [
   { id: "all", label: "Все" },

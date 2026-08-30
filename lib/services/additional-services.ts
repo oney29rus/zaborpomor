@@ -46,7 +46,7 @@ export const ADDITIONAL_SERVICES: AdditionalService[] = [
       "Металлические столбы и лаги — готовая основа под монтаж материала забора.",
     image: SERVICE_IMAGES.karkasZabora,
     imageAlt: SERVICE_IMAGE_ALTS.karkasZabora,
-    href: "/uslugi/karkas-zabora/",
+    href: "/uslugi/karkas-zabora",
     published: true,
   },
   {
@@ -58,7 +58,7 @@ export const ADDITIONAL_SERVICES: AdditionalService[] = [
       "Комплект сваи с установкой под каркас будущего забора.",
     image: SERVICE_IMAGES.vintovyeSvai,
     imageAlt: SERVICE_IMAGE_ALTS.vintovyeSvai,
-    href: "/uslugi/vintovye-svai/",
+    href: "/uslugi/vintovye-svai",
     published: true,
   },
   {
@@ -71,7 +71,7 @@ export const ADDITIONAL_SERVICES: AdditionalService[] = [
       "Изготовим и установим распашные ворота для въезда на участок.",
     image: SERVICE_IMAGES.raspashnyeVorota,
     imageAlt: SERVICE_IMAGE_ALTS.raspashnyeVorota,
-    href: "/vorota/raspashnye/",
+    href: "/vorota/raspashnye",
     published: true,
   },
   {
@@ -85,7 +85,7 @@ export const ADDITIONAL_SERVICES: AdditionalService[] = [
     extraNote: `Автоматика Nice — +${formatServicePrice(GATE_AUTOMATION_NICE_PRICE)}`,
     image: SERVICE_IMAGES.otkatnyeVorota,
     imageAlt: SERVICE_IMAGE_ALTS.otkatnyeVorota,
-    href: "/vorota/otkatnye/",
+    href: "/vorota/otkatnye",
     published: true,
   },
 ];

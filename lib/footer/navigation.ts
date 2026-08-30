@@ -69,27 +69,27 @@ export const FOOTER_CONFIG: FooterConfig = {
     items: [
       {
         label: "Монтаж из материала заказчика",
-        href: "/uslugi/montazh-zabora-iz-materiala-zakazchika/",
+        href: "/uslugi/montazh-zabora-iz-materiala-zakazchika",
         published: true,
       },
       {
         label: "Каркас забора",
-        href: "/uslugi/karkas-zabora/",
+        href: "/uslugi/karkas-zabora",
         published: true,
       },
       {
         label: "Винтовые сваи",
-        href: "/uslugi/vintovye-svai/",
+        href: "/uslugi/vintovye-svai",
         published: true,
       },
       {
         label: "Распашные ворота",
-        href: "/vorota/raspashnye/",
+        href: "/vorota/raspashnye",
         published: true,
       },
       {
         label: "Откатные ворота",
-        href: "/vorota/otkatnye/",
+        href: "/vorota/otkatnye",
         published: true,
       },
     ],
@@ -99,7 +99,7 @@ export const FOOTER_CONFIG: FooterConfig = {
     items: [
       {
         label: "Наши работы",
-        href: "/raboty/",
+        href: "/raboty",
         published: true,
       },
       {
@@ -123,7 +123,7 @@ export const FOOTER_CONFIG: FooterConfig = {
     copyright: `© 2026 ${SITE_NAME}`,
     privacy: {
       label: "Политика конфиденциальности",
-      href: "/privacy/",
+      href: "/privacy",
       published: true,
     },
   },

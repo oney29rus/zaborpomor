@@ -15,6 +15,7 @@ import {
 import {
   getSimilarWorkProjects,
 } from "@/lib/works/project-seo";
+import { workProjectPath } from "@/lib/urls";
 import type { WorkProject } from "@/lib/works/types";
 import { WorkProjectGallery } from "./WorkProjectGallery";
 import { WorkProjectOrderBlock } from "./WorkProjectOrderBlock";
@@ -27,8 +28,8 @@ type WorkProjectViewProps = {
 export function WorkProjectView({ project }: WorkProjectViewProps) {
   const breadcrumbs = [
     { label: "Главная", href: "/" },
-    { label: "Наши работы", href: "/raboty/" },
-    { label: project.title, href: `/raboty/${project.slug}/` },
+    { label: "Наши работы", href: "/raboty" },
+    { label: project.title, href: workProjectPath(project.slug) },
   ];
 
   const specs = getWorkProjectSpecs(project);

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import type { FencePageBreadcrumb } from "@/lib/fence-pages/types";
 
 type BreadcrumbsProps = {
@@ -24,12 +24,12 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   {item.label}
                 </span>
               ) : (
-                <Link
+                <InternalLink
                   href={item.href}
                   className="transition-colors hover:text-accent"
                 >
                   {item.label}
-                </Link>
+                </InternalLink>
               )}
             </li>
           );

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import { FOOTER_CONFIG } from "@/lib/footer/navigation";
 import { FooterMobileNav } from "@/components/layout/FooterMobileNav";
 import { SECTION_CONTAINER } from "@/lib/section-styles";
@@ -15,9 +15,9 @@ function FooterNavLink({ item }: { item: FooterNavItem }) {
   }
 
   return (
-    <Link href={item.href} className={linkClassName}>
+    <InternalLink href={item.href} className={linkClassName}>
       {item.label}
-    </Link>
+    </InternalLink>
   );
 }
 
@@ -104,12 +104,12 @@ export function Footer() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-sm text-white/50">{legal.copyright}</p>
             {legal.privacy.published ? (
-              <Link
+              <InternalLink
                 href={legal.privacy.href}
                 className={`inline-flex ${linkClassName}`}
               >
                 {legal.privacy.label}
-              </Link>
+              </InternalLink>
             ) : null}
           </div>
         </div>

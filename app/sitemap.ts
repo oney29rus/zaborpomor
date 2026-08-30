@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
 import { getIndexableRoutes } from "@/lib/seo/indexable-routes";
+import { toAbsoluteUrl } from "@/lib/urls";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   return getIndexableRoutes().map((path) => ({
-    url: `${SITE_URL}${path}`,
+    url: toAbsoluteUrl(path),
     lastModified,
     changeFrequency: path === "/" ? "weekly" : "monthly",
     priority:
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             path.includes("/novodvinsk") ||
             path.includes("/holmogory") ||
             path.includes("/primorskiy-rayon") ||
-            path === "/raboty/"
+            path === "/raboty"
           ? 0.9
           : path.startsWith("/raboty/")
             ? 0.7

@@ -17,7 +17,7 @@ export const CITIES = ["Архангельск", "Северодвинск", "Н
 export const NAV_LINKS = [
   { label: "Заборы", href: "/#fence-types" },
   { label: "Цены", href: "/#prices" },
-  { label: "Наши работы", href: "/raboty/" },
+  { label: "Наши работы", href: "/raboty" },
   { label: "О компании", href: "/#why-us" },
 ] as const;
 

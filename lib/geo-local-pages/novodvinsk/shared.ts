@@ -1,6 +1,6 @@
 import type { FencePageBreadcrumb, FencePageGeo } from "@/lib/fence-pages/types";
 
-export const NOVODVINSK_CITY_PATH = "/novodvinsk/";
+export const NOVODVINSK_CITY_PATH = "/novodvinsk";
 
 export function novodvinskBreadcrumbs(
   serviceLabel: string,
@@ -45,10 +45,10 @@ export function buildNovodvinskGeo(options: {
     servicePhrase: options.servicePhrase,
     cityLinks: [
       { label: "Новодвинск", href: NOVODVINSK_CITY_PATH, published: true },
-      { label: "Архангельск", href: "/arhangelsk/", published: true },
-      { label: "Северодвинск", href: "/severodvinsk/", published: true },
-      { label: "Приморский район", href: "/primorskiy-rayon/", published: true },
-      { label: "Холмогоры", href: "/holmogory/", published: true },
+      { label: "Архангельск", href: "/arhangelsk", published: true },
+      { label: "Северодвинск", href: "/severodvinsk", published: true },
+      { label: "Приморский район", href: "/primorskiy-rayon", published: true },
+      { label: "Холмогоры", href: "/holmogory", published: true },
     ],
     areaMentions: [],
   };
@@ -57,22 +57,22 @@ export function buildNovodvinskGeo(options: {
 export const NOVODVINSK_LOCAL_SERVICE_LINKS = [
   {
     label: "Заборы из профнастила",
-    href: "/novodvinsk/zabory/profnastil/",
+    href: "/novodvinsk/zabory/profnastil",
     description: "Профлист с установкой под ключ — цена за метр",
   },
   {
     label: "Заборы из металлоштакетника",
-    href: "/novodvinsk/zabory/metalloshtaketnik/",
+    href: "/novodvinsk/zabory/metalloshtaketnik",
     description: "Металлический штакетник и евроштакетник с монтажом",
   },
   {
     label: "Откатные ворота",
-    href: "/novodvinsk/vorota/otkatnye/",
+    href: "/novodvinsk/vorota/otkatnye",
     description: "Изготовление и установка откатных ворот",
   },
   {
     label: "Распашные ворота",
-    href: "/novodvinsk/vorota/raspashnye/",
+    href: "/novodvinsk/vorota/raspashnye",
     description: "Распашные ворота для забора с калиткой",
   },
 ] as const;

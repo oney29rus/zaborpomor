@@ -70,7 +70,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     priceLabel: buildCatalogPriceLabel("metalloshtaketnik"),
     description:
       "Современный металлический забор с хорошей продуваемостью участка.",
-    href: "/zabory/metalloshtaketnik/",
+    href: "/zabory/metalloshtaketnik",
     ...buildCatalogHero("metalloshtaketnik"),
     size: "featured",
   },
@@ -80,7 +80,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     priceLabel: buildCatalogPriceLabel("profnastil"),
     description:
       "Сплошной забор, закрывающий участок от посторонних взглядов.",
-    href: "/zabory/profnastil/",
+    href: "/zabory/profnastil",
     ...buildCatalogHero("profnastil"),
     size: "featured",
   },
@@ -90,7 +90,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     priceLabel: buildCatalogPriceLabel("3d-setka"),
     description:
       "Практичный вариант для дачи, участка или коммерческой территории.",
-    href: "/zabory/3d-setka/",
+    href: "/zabory/3d-setka",
     ...buildCatalogHero("3d-setka"),
     size: "standard",
   },
@@ -99,7 +99,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     title: "Сварная сетка",
     priceLabel: buildCatalogPriceLabel("svarnaya-setka"),
     description: "Один из самых доступных вариантов ограждения участка.",
-    href: "/zabory/svarnaya-setka/",
+    href: "/zabory/svarnaya-setka",
     ...buildCatalogHero("svarnaya-setka"),
     size: "standard",
   },
@@ -109,7 +109,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     priceLabel: buildCatalogPriceLabel("svarnaya-setka-pvh"),
     description:
       "Оцинкованная сварная сетка с ПВХ-покрытием — практичный вариант для дачи.",
-    href: "/zabory/svarnaya-setka-pvh/",
+    href: "/zabory/svarnaya-setka-pvh",
     ...buildCatalogHero("svarnaya-setka-pvh"),
     size: "standard",
   },
@@ -118,7 +118,7 @@ export const FENCE_CATALOG: FenceCatalogItem[] = [
     title: "Деревянный штакетник",
     priceLabel: buildCatalogPriceLabel("derevyannyy-shtaketnik"),
     description: "Классический внешний вид с натуральной фактурой дерева.",
-    href: "/zabory/derevyannyy-shtaketnik/",
+    href: "/zabory/derevyannyy-shtaketnik",
     ...buildCatalogHero("derevyannyy-shtaketnik"),
     size: "standard",
   },

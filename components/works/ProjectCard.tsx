@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { InternalLink } from "@/components/ui/InternalLink";
 import {
   formatWorkDuration,
   formatWorkLocation,
@@ -8,6 +8,7 @@ import {
   formatWorkSummaryLine,
   hasDetailedWorkCard,
 } from "@/lib/works/format";
+import { workProjectPath } from "@/lib/urls";
 import type { WorkProject } from "@/lib/works/types";
 import { ProjectCardImage } from "./ProjectCardImage";
 
@@ -28,7 +29,7 @@ export function ProjectCard({
   linkToDetail = true,
   variant = "default",
 }: ProjectCardProps) {
-  const href = `/raboty/${project.slug}/`;
+  const href = workProjectPath(project.slug);
   const detailed = hasDetailedWorkCard(project);
   const priceLine = formatWorkPriceLine(project);
   const useAlignedLayout = aligned && detailed && variant === "default";
@@ -41,9 +42,9 @@ export function ProjectCard({
     return (
       <article className="flex h-full flex-col">
         {linkToDetail ? (
-          <Link href={href} className="block shrink-0">
+          <InternalLink href={href} className="block shrink-0">
             <ProjectCardImage project={project} compact />
-          </Link>
+          </InternalLink>
         ) : (
           <ProjectCardImage project={project} compact className="shrink-0" />
         )}
@@ -55,9 +56,9 @@ export function ProjectCard({
 
           <h3 className="mt-0.5 line-clamp-2 text-base font-bold leading-snug tracking-tight text-foreground">
             {linkToDetail ? (
-              <Link href={href} className="transition-colors hover:text-accent">
+              <InternalLink href={href} className="transition-colors hover:text-accent">
                 {project.title}
-              </Link>
+              </InternalLink>
             ) : (
               project.title
             )}
@@ -80,12 +81,12 @@ export function ProjectCard({
           ) : null}
 
           {linkToDetail ? (
-            <Link
+            <InternalLink
               href={href}
               className="mt-auto inline-flex pt-2 text-sm font-semibold text-foreground transition-colors hover:text-accent"
             >
               Подробнее →
-            </Link>
+            </InternalLink>
           ) : null}
         </div>
       </article>
@@ -93,9 +94,9 @@ export function ProjectCard({
   }
 
   const titleNode = linkToDetail ? (
-    <Link href={href} className="transition-colors hover:text-accent">
+    <InternalLink href={href} className="transition-colors hover:text-accent">
       {titleText}
-    </Link>
+    </InternalLink>
   ) : (
     titleText
   );
@@ -110,12 +111,12 @@ export function ProjectCard({
           className={useAlignedLayout ? "shrink-0" : undefined}
         />
       ) : (
-        <Link
+        <InternalLink
           href={href}
           className={`block ${useAlignedLayout ? "shrink-0" : ""}`}
         >
           <ProjectCardImage project={project} compact={compact} />
-        </Link>
+        </InternalLink>
       )}
 
       <div
@@ -199,12 +200,12 @@ export function ProjectCard({
                 </p>
 
                 {linkToDetail ? (
-                  <Link
+                  <InternalLink
                     href={href}
                     className="mt-2 inline-flex text-sm font-semibold text-foreground transition-colors hover:text-accent"
                   >
                     Подробнее →
-                  </Link>
+                  </InternalLink>
                 ) : null}
               </div>
             ) : null}
@@ -216,12 +217,12 @@ export function ProjectCard({
         )}
 
         {!useAlignedLayout && linkToDetail ? (
-          <Link
+          <InternalLink
             href={href}
             className="mt-2 inline-flex text-sm font-semibold text-foreground transition-colors hover:text-accent lg:mt-2.5"
           >
             {detailed ? "Подробнее →" : "Смотреть объект →"}
-          </Link>
+          </InternalLink>
         ) : null}
       </div>
     </article>

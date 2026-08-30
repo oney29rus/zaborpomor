@@ -11,19 +11,19 @@ export const GEO_PRIMARY_CITIES: GeoCity[] = [
     step: "01",
     name: "Архангельск",
     tagline: "Заборы под ключ в Архангельске",
-    href: "/arhangelsk/",
+    href: "/arhangelsk",
   },
   {
     step: "02",
     name: "Северодвинск",
     tagline: "Заборы под ключ в Северодвинске",
-    href: "/severodvinsk/",
+    href: "/severodvinsk",
   },
   {
     step: "03",
     name: "Новодвинск",
     tagline: "Заборы под ключ в Новодвинске",
-    href: "/novodvinsk/",
+    href: "/novodvinsk",
   },
 ];
 
@@ -33,13 +33,13 @@ export const GEO_SECONDARY_AREAS: GeoCity[] = [
     step: "04",
     name: "Холмогоры",
     tagline: "Заборы под ключ в Холмогорском районе",
-    href: "/holmogory/",
+    href: "/holmogory",
   },
   {
     step: "05",
     name: "Приморский район",
     tagline: "Заборы под ключ в Приморском районе",
-    href: "/primorskiy-rayon/",
+    href: "/primorskiy-rayon",
   },
 ];
 
