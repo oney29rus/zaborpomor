@@ -28,10 +28,10 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
   seo: {
     title:
-      "Забор из металлоштакетника под ключ — цена от 3 600 ₽/м | Заборы Поморья",
+      "Забор из металлического штакетника в Архангельске — цена | Заборы Поморья",
 
     description:
-      "Установка заборов из металлического штакетника в Архангельске, Северодвинске и Новодвинске. Цена от 3 600 ₽/м с материалом и монтажом. Расчёт стоимости, замер, гарантия 24 месяца.",
+      "Заборы из металлического штакетника и евроштакетника в Архангельске с установкой. Цена за метр, варианты заполнения, бесплатный замер и гарантия 24 месяца.",
 
     canonicalPath: CANONICAL_PATH,
   },
@@ -47,10 +47,9 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
   hero: {
     label: "МЕТАЛЛИЧЕСКИЙ ШТАКЕТНИК",
 
-    title: "Забор из металлоштакетника под ключ",
+    title: "Заборы из металлического штакетника в Архангельске",
 
-    description:
-      "Изготовим и установим металлический штакетник в Архангельске, Северодвинске, Новодвинске и ближайших районах. Материал и монтаж — от 3 600 ₽/м.",
+    description: `Металлический штакетник также называют металлоштакетником или евроштакетником. Изготовим и установим забор в Архангельске и области — ${fencePriceFromLabel15("metalloshtaketnik")} с материалом и монтажом.`,
 
     priceLabel: fencePriceFromLabel15("metalloshtaketnik"),
 
@@ -66,9 +65,9 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
 
     benefits: ["Своё производство", "Гарантия 24 месяца", "Бесплатный замер"],
 
-    image: WORK_IMAGES.novodvinskAvtomobilist,
+    image: WORK_IMAGES.metallZaostrovye,
 
-    imageAlt: WORK_IMAGE_ALTS.novodvinskAvtomobilist,
+    imageAlt: WORK_IMAGE_ALTS.metallZaostrovye,
 
     imageObjectPosition: "50% 40%",
   },
@@ -236,23 +235,15 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
     filterCategory: "metalloshtaketnik",
 
     projectSlugs: [
-      "metalloshtaketnik-snt-avtomobilist",
-
-      "metalloshtaketnik-snt-druzhba",
-
-      "metalloshtaketnik-shahmatka-snt-nadezhda",
-
-      "metalloshtaketnik-derevnya-buty",
-
-      "metalloshtaketnik-derevnya-harlovo",
-
-      "metalloshtaketnik-derevnya-demidovo",
-
-      "metalloshtaketnik-derevnya-novinki-matigory",
-
-      "metalloshtaketnik-izhma",
-
+      "metalloshtaketnik-zaostrovye",
+      "metalloshtaketnik-maloe-toynokurye",
+      "metalloshtaketnik-svyazist",
       "metalloshtaketnik-emelyanovskaya",
+      "metalloshtaketnik-shahmatka-snt-uyma",
+      "metalloshtaketnik-shahmatka-snt-dvina",
+      "metalloshtaketnik-snt-avtomobilist",
+      "metalloshtaketnik-snt-druzhba",
+      "metalloshtaketnik-shahmatka-snt-nadezhda",
     ],
 
     allWorksHref: "/raboty/",
@@ -412,12 +403,18 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
       {
         id: "metall-price",
 
-        question: "Сколько стоит забор из металлоштакетника?",
+        question: "Сколько стоит металлоштакетник в Архангельске?",
 
         answer: fenceFaqPriceByHeightAnswer(
           "metalloshtaketnik",
           `Шахматное заполнение: ${fencePriceNoteForAllHeights("shtaketnik-shahmatka")}. Итог зависит от длины, зазора, ворот и особенностей участка.`,
         ),
+      },
+      {
+        id: "metall-names",
+        question: "Металлоштакетник, евроштакетник — это одно?",
+        answer:
+          "Да. Металлический штакетник, металлоштакетник и евроштакетник — разные названия одного материала. Мы устанавливаем забор под ключ, а не продаём планки поштучно.",
       },
 
       {
@@ -515,6 +512,7 @@ export const METALLOSHTAKETNIK_PAGE: FencePageContent = {
     title: "Другие варианты заборов",
 
     links: [
+      { label: "Заборы в Архангельске", href: "/arhangelsk/" },
       { label: "Профнастил", href: "/zabory/profnastil/" },
 
       {

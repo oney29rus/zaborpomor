@@ -14,8 +14,10 @@ const CANONICAL_PATH = "/vorota/otkatnye/";
 export const OTKATNYE_VOROTA_PAGE: ServicePageContent = {
   slug: "otkatnye",
   seo: {
-    title: "Откатные ворота в Архангельске под ключ | Заборы Поморья",
-    description: `Изготовление и установка откатных ворот под ключ в Архангельске и области. Ворота шириной 4 м — от ${formatServicePrice(SLIDING_GATE_PRICE)}. Автоматика Nice — дополнительная опция.`,
+    title:
+      "Откатные ворота в Архангельске — цена с установкой | Заборы Поморья",
+    description:
+      "Изготовление и установка откатных ворот в Архангельске. Ворота под ключ с автоматикой или без. Рассчитаем стоимость под ваш проём.",
     canonicalPath: CANONICAL_PATH,
   },
   breadcrumbs: [
@@ -25,9 +27,9 @@ export const OTKATNYE_VOROTA_PAGE: ServicePageContent = {
   ],
   hero: {
     label: "ОТКАТНЫЕ ВОРОТА",
-    title: "Откатные ворота под ключ\nв Архангельске",
+    title: "Откатные ворота в Архангельске",
     description:
-      "Изготавливаем и устанавливаем откатные ворота для въезда на участок.",
+      "Изготавливаем и устанавливаем откатные ворота для въезда на участок — с автоматикой Nice или без неё.",
     priceLabel: `от ${formatServicePrice(SLIDING_GATE_PRICE)}`,
     priceCaption: "ворота шириной 4 метра",
     primaryCtaLabel: "Рассчитать откатные ворота",
@@ -124,7 +126,14 @@ export const OTKATNYE_VOROTA_PAGE: ServicePageContent = {
     addonPriceLabel: `+${formatServicePrice(GATE_AUTOMATION_NICE_PRICE)}`,
   },
   works: {
-    title: "Наши работы",
+    title: "Откатные ворота — наши работы",
+    projectSlugs: [
+      "metalloshtaketnik-shahmatka-snt-uyma",
+      "metalloshtaketnik-shahmatka-snt-dvina",
+      "metalloshtaketnik-snt-druzhba",
+      "metalloshtaketnik-shahmatka-snt-nadezhda",
+      "profnastil-kp-rodnik",
+    ],
   },
   process: {
     title: "Этапы установки",
@@ -155,6 +164,17 @@ export const OTKATNYE_VOROTA_PAGE: ServicePageContent = {
         answer: "Базовая цена указана для откатных ворот шириной 4 метра.",
       },
       {
+        id: "slide-vs-swing",
+        question: "Откатные или распашные ворота?",
+        answer:
+          "Откатные удобны, когда рядом с проёмом мало места для открывания створок. Распашные проще и часто дешевле — если пространства достаточно. Подскажем после замера.",
+        answerLink: {
+          href: "/vorota/raspashnye/",
+          label: "Распашные ворота",
+          after: ".",
+        },
+      },
+      {
         id: "slide-warranty",
         question: "Есть ли гарантия?",
         answer: "На выполненные работы действует гарантия 24 месяца.",
@@ -164,12 +184,21 @@ export const OTKATNYE_VOROTA_PAGE: ServicePageContent = {
   relatedLinks: {
     title: "Связанные разделы",
     links: [
+      { label: "Заборы в Архангельске", href: "/arhangelsk/" },
       { label: "Профнастил", href: "/zabory/profnastil/" },
       { label: "Металлоштакетник", href: "/zabory/metalloshtaketnik/" },
       { label: "Распашные ворота", href: "/vorota/raspashnye/" },
     ],
   },
-  geo: SERVICE_PAGE_GEO,
+  geo: {
+    title: "Откатные ворота в Архангельске и области",
+    paragraphs: [
+      "Изготавливаем и монтируем откатные ворота под ключ в Архангельске и по области. Выезжаем на замер, подбираем заполнение и рассчитываем стоимость до начала работ.",
+    ],
+    servicePhrase: "откатные ворота",
+    cityLinks: SERVICE_PAGE_GEO.cityLinks,
+    areaMentions: SERVICE_PAGE_GEO.areaMentions,
+  },
   cta: {
     label: "Рассчитаем ворота",
     title: "Рассчитаем стоимость\nоткатных ворот",

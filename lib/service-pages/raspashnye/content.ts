@@ -15,7 +15,8 @@ export const RASPASHNYE_VOROTA_PAGE: ServicePageContent = {
   seo: {
     title:
       "Распашные ворота в Архангельске — изготовление и установка | Заборы Поморья",
-    description: `Изготовление и установка распашных ворот для забора в Архангельске и области. Металлические ворота шириной 4 м — от ${formatServicePrice(SWING_GATES_PRICE)}.`,
+    description:
+      "Распашные ворота для забора в Архангельске. Изготовление и установка под ключ, варианты с калиткой. Рассчитаем стоимость под размеры проёма.",
     canonicalPath: CANONICAL_PATH,
   },
   breadcrumbs: [
@@ -25,9 +26,9 @@ export const RASPASHNYE_VOROTA_PAGE: ServicePageContent = {
   ],
   hero: {
     label: "РАСПАШНЫЕ ВОРОТА",
-    title: "Распашные ворота для забора\nв Архангельске",
+    title: "Распашные ворота в Архангельске",
     description:
-      "Изготавливаем и устанавливаем металлические распашные ворота для въезда на участок.",
+      "Изготавливаем металлические распашные ворота для въезда на участок — классический вариант, когда рядом с проёмом достаточно места для открывания створок.",
     priceLabel: `от ${formatServicePrice(SWING_GATES_PRICE)}`,
     priceCaption: "для ворот шириной 4 метра",
     primaryCtaLabel: "Рассчитать распашные ворота",
@@ -112,7 +113,12 @@ export const RASPASHNYE_VOROTA_PAGE: ServicePageContent = {
     ],
   },
   works: {
-    title: "Наши работы",
+    title: "Распашные ворота — примеры работ",
+    projectSlugs: [
+      "kombinirovannyy-zabor-snt-pomorochka",
+      "metalloshtaketnik-derevnya-buty",
+      "profnastil-kp-rodnik",
+    ],
   },
   process: {
     title: "Этапы работы",
@@ -144,6 +150,23 @@ export const RASPASHNYE_VOROTA_PAGE: ServicePageContent = {
           "Да, подбираем заполнение — профнастил, металлоштакетник, сетку или другой согласованный материал.",
       },
       {
+        id: "swing-wicket",
+        question: "Можно заказать калитку вместе с воротами?",
+        answer:
+          "Да. Калитку изготавливаем в том же стиле, что и распашные ворота — удобный проход на участок без открывания основного проёма.",
+      },
+      {
+        id: "swing-vs-slide",
+        question: "Распашные или откатные — что выбрать?",
+        answer:
+          "Распашные проще и часто дешевле, если рядом с проёмом достаточно места. Откатные удобнее на узком проезде.",
+        answerLink: {
+          href: "/vorota/otkatnye/",
+          label: "Откатные ворота",
+          after: ".",
+        },
+      },
+      {
         id: "swing-warranty",
         question: "Есть ли гарантия?",
         answer: "На выполненные работы действует гарантия 24 месяца.",
@@ -151,14 +174,23 @@ export const RASPASHNYE_VOROTA_PAGE: ServicePageContent = {
     ],
   },
   relatedLinks: {
-    title: "Заборы с распашными воротами",
+    title: "Связанные разделы",
     links: [
+      { label: "Заборы в Архангельске", href: "/arhangelsk/" },
       { label: "Профнастил", href: "/zabory/profnastil/" },
       { label: "Металлоштакетник", href: "/zabory/metalloshtaketnik/" },
       { label: "Откатные ворота", href: "/vorota/otkatnye/" },
     ],
   },
-  geo: SERVICE_PAGE_GEO,
+  geo: {
+    title: "Распашные ворота в Архангельске и области",
+    paragraphs: [
+      "Изготавливаем и устанавливаем распашные ворота под ключ в Архангельске и по области. Замер проёма, подбор заполнения и расчёт — до начала монтажа.",
+    ],
+    servicePhrase: "распашные ворота",
+    cityLinks: SERVICE_PAGE_GEO.cityLinks,
+    areaMentions: SERVICE_PAGE_GEO.areaMentions,
+  },
   cta: {
     label: "Рассчитаем ворота",
     title: "Рассчитаем стоимость\nраспашных ворот",

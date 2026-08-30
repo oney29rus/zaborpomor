@@ -9,6 +9,7 @@ import {
   FENCE_HEIGHTS_SPEC_LABEL,
   fenceFaqPriceByHeightAnswer,
   fencePriceFromLabel15,
+  slidingGateCalculatorSurchargeLabel,
 } from "@/lib/pricing/fence-price-labels";
 import { MONTAZH_IZ_MATERIALA_HREF } from "@/lib/services/mount-only";
 import { WORK_IMAGE_ALTS, WORK_IMAGES } from "@/lib/works/assets";
@@ -20,9 +21,9 @@ export const PROFNASTIL_PAGE: FencePageContent = {
   fenceTypeId: "profnastil",
   seo: {
     title:
-      "Забор из профнастила под ключ — цена от 3 400 ₽/м | Заборы Поморья",
+      "Забор из профнастила в Архангельске — цена с установкой | Заборы Поморья",
     description:
-      "Установка заборов из профнастила в Архангельске, Северодвинске и Новодвинске. Цена от 3 400 ₽/м с материалом и монтажом. Расчёт стоимости, замер, гарантия 24 месяца.",
+      "Заборы из профнастила и профлиста в Архангельске под ключ. Цена за метр с материалами и установкой. Бесплатный замер, расчёт стоимости и гарантия 24 месяца.",
     canonicalPath: CANONICAL_PATH,
   },
   breadcrumbs: [
@@ -32,9 +33,8 @@ export const PROFNASTIL_PAGE: FencePageContent = {
   ],
   hero: {
     label: "ЗАБОРЫ ИЗ ПРОФНАСТИЛА",
-    title: "Забор из профнастила под ключ",
-    description:
-      "Изготовим и установим забор из профнастила в Архангельске, Северодвинске, Новодвинске и ближайших районах. Материал и монтаж — от 3 400 ₽/м.",
+    title: "Заборы из профнастила в Архангельске",
+    description: `Изготовим и установим забор из профнастила и профлиста в Архангельске и области — ${fencePriceFromLabel15("profnastil")} с материалом и монтажом.`,
     priceLabel: fencePriceFromLabel15("profnastil"),
     priceCaption: "с материалом и монтажом",
     primaryCtaLabel: "Рассчитать стоимость",
@@ -42,8 +42,8 @@ export const PROFNASTIL_PAGE: FencePageContent = {
     secondaryCtaLabel: "Посмотреть работы",
     secondaryCtaHref: "#profnastil-works",
     benefits: ["Своё производство", "Гарантия 24 месяца", "Бесплатный замер"],
-    image: WORK_IMAGES.profnastilSntSever,
-    imageAlt: WORK_IMAGE_ALTS.profnastilSntSever,
+    image: WORK_IMAGES.profnastilShirsha,
+    imageAlt: WORK_IMAGE_ALTS.profnastilShirsha,
     imageObjectPosition: "50% 50%",
   },
   specs: [
@@ -137,8 +137,15 @@ export const PROFNASTIL_PAGE: FencePageContent = {
     ],
   },
   works: {
-    title: "Наши заборы из профнастила",
+    title: "Заборы из профнастила — наши работы",
     filterCategory: "profnastil",
+    projectSlugs: [
+      "profnastil-shirsha",
+      "profnastil-kp-rodnik",
+      "profnastil-snt-sever",
+      "profnastil-pod-derevo-snt-karkul",
+      "kombinirovannyy-zabor-snt-pomorochka",
+    ],
     allWorksHref: "/raboty/",
     allWorksPublished: true,
   },
@@ -245,11 +252,17 @@ export const PROFNASTIL_PAGE: FencePageContent = {
     items: [
       {
         id: "profnastil-price",
-        question: "Сколько стоит забор из профнастила?",
+        question: "Сколько стоит забор из профнастила в Архангельске?",
         answer: fenceFaqPriceByHeightAnswer(
           "profnastil",
           "Итог зависит от длины, комплектации, ворот и особенностей участка.",
         ),
+      },
+      {
+        id: "profnastil-proflist",
+        question: "Профнастил и профлист — это одно и то же?",
+        answer:
+          "Да. Профнастил и профлист — разговорные названия профилированного листа для ограждения. Мы устанавливаем забор под ключ, а не продаём листы отдельно.",
       },
       {
         id: "profnastil-height",
@@ -277,8 +290,7 @@ export const PROFNASTIL_PAGE: FencePageContent = {
       {
         id: "profnastil-sliding-gates",
         question: "Можно ли установить откатные ворота?",
-        answer:
-          "Да, изготавливаем откатные ворота из профнастила в том же стиле, что и забор. В калькуляторе к стоимости забора добавляется +100 000 ₽ за изготовление откатных ворот. Подробнее — ",
+        answer: `Да, изготавливаем откатные ворота из профнастила в том же стиле, что и забор. В калькуляторе к стоимости забора добавляется ${slidingGateCalculatorSurchargeLabel()} за изготовление откатных ворот. Подробнее — `,
         answerLink: {
           href: "/vorota/otkatnye/",
           label: "откатные ворота",
@@ -332,6 +344,7 @@ export const PROFNASTIL_PAGE: FencePageContent = {
   relatedFences: {
     title: "Другие варианты заборов",
     links: [
+      { label: "Заборы в Архангельске", href: "/arhangelsk/" },
       { label: "Металлоштакетник", href: "/zabory/metalloshtaketnik/" },
       { label: "3D-сетка", href: "/zabory/3d-setka/" },
       { label: "Сварная сетка", href: "/zabory/svarnaya-setka/" },
