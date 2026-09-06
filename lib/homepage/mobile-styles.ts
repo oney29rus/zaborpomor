@@ -8,7 +8,7 @@ export const HOME_SECTION_CONTENT_MT = "mt-3 lg:mt-6" as const;
 
 /** Калькулятор на главной — компактнее остальных секций на mobile */
 export const CALCULATOR_SECTION_PY =
-  "scroll-mt-24 bg-background pt-3 pb-3 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16" as const;
+  "scroll-mt-24 bg-background max-sm:border-t max-sm:border-border max-sm:pt-8 max-sm:pb-6 sm:pt-12 sm:pb-12 lg:pt-12 lg:pb-16" as const;
 
 export const CALCULATOR_SECTION_LABEL =
   "text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-accent lg:text-xs lg:tracking-[0.18em]" as const;

@@ -24,16 +24,16 @@ export function Hero() {
   return (
     <section className="bg-background">
       <div
-        className={`${SECTION_CONTAINER} max-lg:flex max-lg:flex-col max-lg:gap-1 max-lg:pb-0 max-lg:pt-0.5 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
+        className={`${SECTION_CONTAINER} max-sm:!px-5 max-sm:pt-5 max-sm:pb-12 max-lg:flex max-lg:flex-col max-sm:gap-0 sm:max-lg:gap-1 max-lg:pb-0 max-lg:pt-0.5 sm:py-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-10`}
       >
         <div className="contents lg:flex lg:flex-col lg:justify-center">
           <p
-            className={`order-1 lg:order-none ${SECTION_LABEL} max-lg:text-[0.6875rem] max-lg:leading-none max-lg:tracking-[0.1em] min-[360px]:max-lg:text-xs`}
+            className={`order-1 lg:order-none ${SECTION_LABEL} max-sm:text-[0.6875rem] max-sm:leading-none max-sm:tracking-[0.1em] min-[360px]:max-sm:text-xs sm:max-lg:text-[0.6875rem] sm:max-lg:leading-none sm:max-lg:tracking-[0.1em] min-[360px]:sm:max-lg:text-xs`}
           >
             Производство и монтаж заборов
           </p>
 
-          <h1 className="order-2 lg:order-none max-w-xl font-bold text-foreground max-lg:mt-0 max-lg:text-[2rem] max-lg:leading-[1.06] max-lg:tracking-[-0.02em] min-[360px]:max-lg:text-[2.0625rem] min-[390px]:max-lg:text-[2.125rem] lg:mt-3 lg:max-w-2xl lg:text-[clamp(1.875rem,4.5vw,3.25rem)] lg:leading-[1.15] lg:tracking-tight xl:max-w-3xl">
+          <h1 className="order-2 lg:order-none max-w-xl font-bold text-foreground max-sm:mt-3 max-sm:text-[2.125rem] max-sm:leading-[1.05] max-sm:tracking-[-0.02em] min-[390px]:max-sm:text-[2.25rem] sm:max-lg:mt-0 sm:max-lg:text-[2rem] sm:max-lg:leading-[1.06] sm:max-lg:tracking-[-0.02em] min-[360px]:sm:max-lg:text-[2.0625rem] min-[390px]:sm:max-lg:text-[2.125rem] lg:mt-3 lg:max-w-2xl lg:text-[clamp(1.875rem,4.5vw,3.25rem)] lg:leading-[1.15] lg:tracking-tight xl:max-w-3xl">
             Заборы под ключ
             <br />
             в&nbsp;Архангельске,
@@ -45,19 +45,19 @@ export function Hero() {
             и&nbsp;Новодвинске
           </h1>
 
-          <p className="order-3 lg:order-none mt-1 max-w-xl text-muted max-lg:mt-0.5 max-lg:text-base max-lg:leading-[1.42] sm:text-lg lg:mt-2 lg:text-base lg:leading-snug">
+          <p className="order-3 lg:order-none mt-1 max-w-xl text-muted max-sm:mt-3 max-sm:text-base max-sm:leading-[1.42] sm:max-lg:mt-0.5 sm:max-lg:text-base sm:max-lg:leading-[1.42] sm:text-lg lg:mt-2 lg:text-base lg:leading-snug">
             Изготовим и установим забор в Архангельске, Северодвинске,
             Новодвинске и по области. Гарантия 24 месяца. Стоимость известна
             до начала работ.
           </p>
 
-          <div className="relative z-10 order-6 max-lg:mt-0.5 flex flex-col items-stretch lg:order-none lg:mt-6 lg:flex-row lg:items-center lg:gap-3">
+          <div className="relative z-10 order-6 max-sm:mt-4 sm:max-lg:mt-0.5 flex flex-col items-stretch lg:order-none lg:mt-6 lg:flex-row lg:items-center lg:gap-3">
             <ButtonLink href="#calculator" className={HERO_PRIMARY_CTA_CLASS}>
               Рассчитать стоимость
             </ButtonLink>
             <Link
               href={WORKS_ALL_HREF}
-              className="mt-3 max-lg:block max-lg:py-0 max-lg:text-center max-lg:text-sm max-lg:font-semibold max-lg:text-accent max-lg:transition-colors max-lg:hover:text-accent-hover lg:hidden"
+              className="max-sm:mt-5 sm:max-lg:mt-3 max-lg:block max-lg:py-0 max-lg:text-center max-lg:text-sm max-lg:font-semibold max-lg:text-accent max-lg:transition-colors max-lg:hover:text-accent-hover lg:hidden"
             >
               Посмотреть работы →
             </Link>
@@ -70,13 +70,13 @@ export function Hero() {
             </ButtonLink>
           </div>
 
-          <ul className="order-7 mt-3 max-lg:grid max-lg:grid-cols-2 max-lg:gap-x-3 max-lg:gap-y-0.5 lg:order-none lg:mt-6 lg:flex lg:flex-row lg:items-center">
+          <ul className="order-7 max-sm:mt-5 max-sm:flex max-sm:flex-col max-sm:gap-3 sm:max-lg:mt-3 sm:max-lg:grid sm:max-lg:grid-cols-2 sm:max-lg:gap-x-3 sm:max-lg:gap-y-0.5 lg:order-none lg:mt-6 lg:flex lg:flex-row lg:items-center">
             {HERO_BENEFITS.map((benefit, index) => (
               <li
                 key={benefit}
-                className={`flex items-center max-lg:gap-0.5 max-lg:text-[0.8125rem] max-lg:leading-none max-lg:text-foreground/85 lg:text-sm lg:text-[0.9375rem] ${
+                className={`flex items-center max-sm:gap-1.5 max-sm:text-[0.8125rem] max-sm:leading-snug max-sm:text-foreground/85 sm:max-lg:gap-0.5 sm:max-lg:text-[0.8125rem] sm:max-lg:leading-none sm:max-lg:text-foreground/85 lg:text-sm lg:text-[0.9375rem] ${
                   index === 2
-                    ? "max-lg:col-span-2 max-lg:justify-self-start min-[390px]:max-lg:col-span-1"
+                    ? "sm:max-lg:col-span-2 sm:max-lg:justify-self-start min-[390px]:sm:max-lg:col-span-1"
                     : ""
                 }`}
               >
@@ -101,7 +101,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="order-4 lg:order-2">
+        <div className="order-4 max-sm:mt-6 sm:max-lg:mt-0 lg:order-2">
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             <div className="relative aspect-[16/6] overflow-hidden rounded-xl border border-border sm:aspect-[5/4] sm:rounded-2xl lg:aspect-[4/3]">
               <Image
