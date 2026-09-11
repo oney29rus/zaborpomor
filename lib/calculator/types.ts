@@ -14,7 +14,7 @@ export type GateType = "none" | "swing" | "sliding";
 
 export type MetallVariant = "standard" | "shahmatka";
 
-export type GapOption = "4cm" | "2cm" | "closed";
+export type GapOption = "4cm" | "2cm" | "closed" | "shahmatka";
 
 export type CalculatorParams = {
   fenceType: FenceTypeId;

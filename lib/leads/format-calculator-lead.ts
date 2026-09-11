@@ -43,9 +43,11 @@ export function buildCalculatorSummaryLine(
   parameterFlags: CalculatorParameterFlags,
 ): string {
   const fenceLabel =
-    parameterFlags.metallVariant && params.metallVariant === "shahmatka"
-      ? formatMetallVariant(params.metallVariant)
-      : getEffectiveFenceTypeLabel(params).toLowerCase();
+    params.fenceType === "metalloshtaketnik" && params.gap === "shahmatka"
+      ? formatMetallVariant("shahmatka")
+      : parameterFlags.metallVariant && params.metallVariant === "shahmatka"
+        ? formatMetallVariant(params.metallVariant)
+        : getEffectiveFenceTypeLabel(params).toLowerCase();
   const height = `${formatHeightValue(params.height)} м`;
   const gate = formatGateType(params.gateType).toLowerCase();
   const parts = [`${params.length} м`, fenceLabel, height];
@@ -63,7 +65,9 @@ export function buildCalculatorSummaryLine(
     (parameterFlags.gapWhenMetallOnly &&
       params.fenceType === "metalloshtaketnik")
   ) {
-    parts.push(formatGap(params.gap));
+    if (params.gap !== "shahmatka") {
+      parts.push(formatGap(params.gap));
+    }
   }
 
   parts.push(gate);

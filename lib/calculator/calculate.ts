@@ -39,17 +39,13 @@ import type {
 
 
 function resolveEffectiveFenceType(params: CalculatorParams): FenceTypeId {
-
-  if (params.metallVariant === "shahmatka") {
-
-    return "shtaketnik-shahmatka";
-
+  if (params.fenceType === "metalloshtaketnik") {
+    if (params.gap === "shahmatka" || params.metallVariant === "shahmatka") {
+      return "shtaketnik-shahmatka";
+    }
   }
 
-
-
   return params.fenceType;
-
 }
 
 

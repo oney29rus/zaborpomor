@@ -2,6 +2,7 @@
 
 import {
   METALLOSHTAKETNIK_GAP_2CM_SURCHARGE_PER_METER,
+  getPricePerMeter,
 } from "@/lib/calculator/prices";
 import type { GapOption } from "@/lib/calculator/types";
 
@@ -19,6 +20,11 @@ const GAP_OPTIONS: { id: GapOption; label: string; note?: string }[] = [
     note: `+${METALLOSHTAKETNIK_GAP_2CM_SURCHARGE_PER_METER.toLocaleString("ru-RU")} ₽/м`,
   },
   { id: "closed", label: "Без зазора" },
+  {
+    id: "shahmatka",
+    label: "Шахматка",
+    note: `от ${getPricePerMeter("shtaketnik-shahmatka", 1.5).toLocaleString("ru-RU")} ₽/м`,
+  },
 ];
 
 export function GapSelector({
@@ -27,7 +33,9 @@ export function GapSelector({
   compactMobile = false,
 }: GapSelectorProps) {
   return (
-    <div className={`grid grid-cols-3 ${compactMobile ? "gap-1.5" : "gap-2 sm:gap-3"}`}>
+    <div
+      className={`grid grid-cols-2 lg:grid-cols-4 ${compactMobile ? "gap-1.5" : "gap-2 sm:gap-3"}`}
+    >
       {GAP_OPTIONS.map((option) => {
         const isActive = value === option.id;
 
@@ -53,7 +61,7 @@ export function GapSelector({
               {option.label}
             </span>
             {option.note ? (
-              <span className="mt-0.5 block text-xs text-muted">
+              <span className="mt-0.5 block text-xs leading-snug text-muted">
                 {option.note}
               </span>
             ) : null}

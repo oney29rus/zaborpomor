@@ -58,7 +58,9 @@ export function formatMetallVariant(variant: "standard" | "shahmatka"): string {
     : "металлоштакетник";
 }
 
-export function formatGap(gap: "4cm" | "2cm" | "closed"): string {
+export function formatGap(
+  gap: "4cm" | "2cm" | "closed" | "shahmatka",
+): string {
   switch (gap) {
     case "4cm":
       return "зазор 4 см";
@@ -66,6 +68,8 @@ export function formatGap(gap: "4cm" | "2cm" | "closed"): string {
       return "зазор 2 см";
     case "closed":
       return "без зазора";
+    case "shahmatka":
+      return "шахматка";
     default:
       return "";
   }

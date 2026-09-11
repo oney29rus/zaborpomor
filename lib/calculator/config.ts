@@ -54,7 +54,7 @@ const PAGE_CONFIGS: Record<FenceTypeId, CalculatorConfig | undefined> = {
     parameters: {
       doubleSidedPaint: false,
       pPlank: false,
-      metallVariant: true,
+      metallVariant: false,
       gap: true,
     },
   },

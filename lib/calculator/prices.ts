@@ -198,7 +198,11 @@ export function getMetalloshtaketnikGapSurchargePerMeter(
   fenceType: FenceTypeId,
   gap: GapOption,
 ): number {
-  if (fenceType === "metalloshtaketnik" && gap === "2cm") {
+  if (fenceType !== "metalloshtaketnik" || gap === "shahmatka") {
+    return 0;
+  }
+
+  if (gap === "2cm") {
     return METALLOSHTAKETNIK_GAP_2CM_SURCHARGE_PER_METER;
   }
 
